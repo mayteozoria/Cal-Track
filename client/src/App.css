@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
 body {
   margin: 0;
   background-color: white;
@@ -39,20 +41,59 @@ h1{
   font-weight: bold;
   color:blue;
 }
-button {
-  border: 0;
-  color:blue;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0.8em 1.2em;
-  font-size: 1.1rem;
+
+.signup-page{
+ display: flex;
 }
 
-  .signup-page {
-    background-color: lightgrey;
-     color: black;
-    width: 300px;
-    border: 15px solid;
-    padding: 100px;
-    margin: 100px;
+  .inside-box {
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
+		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+	height: 400px;
+	width: 600px;
+	margin: auto 0;
+	border-radius: 20px;
+	text-align: center;
+	justify-content: center;
+	margin-top: 70px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
   }
+
+
+  
+
+form{
+  width: 100%;
+  padding: 50px;
+  /* border-radius: 10px; */
+  box-shadow: 10px 10px 5px grey;
+  background-color: white;
+}
+
+form,
+.input-wrapper {
+  margin: auto;
+  width: 100%;
+}
+
+form label {
+  align-self: flex-start;
+}
+
+.input-wrapper {
+  width: 80%;
+  margin: 0;
+  padding: 0;
+}
+
+.input-wrapper input {
+  padding: 0.6em 1.2em;
+  margin: 0.5em auto;
+  width: 100%;
+  border-color: var(--primary-bg);
+  font-size: 1.1rem;
+  outline: none;
+}
