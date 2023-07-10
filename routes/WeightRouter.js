@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const controller = require('../controllers/WeightpController')
+const controller = require('../controllers/WeightController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetWeight)

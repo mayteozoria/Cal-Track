@@ -6,6 +6,7 @@ const AuthRouter = require('./routes/AuthRouter')
 const PostRouter = require('./routes/PostRouter')
 const FoodRouter = require('./routes/FoodRouter')
 const StepRouter = require('./routes/StepRouter')
+const WeightRouter = require('./routes/WeightRouter')
 
 const PORT = process.env.PORT || 3001
 
@@ -22,6 +23,7 @@ app.use('/auth', AuthRouter)
 app.use('/posts', PostRouter)
 app.use('/foods', FoodRouter)
 app.use('/steps', StepRouter)
+app.use('/weight', WeightRouter)
 
 app.use('/', (req, res) => {
   res.send(`Connected!`)
