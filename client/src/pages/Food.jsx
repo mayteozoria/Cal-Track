@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { GetFoods } from '../services/FoodServices'
 import { BASE_URL, API_KEY } from '../globals'
-import Search from '../components/Search'
 
 const Food = () => {
-  const [food, setFood] = useState([])
   const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState([])
 
   useEffect(() => {
     const getFoods = async () => {
@@ -13,7 +12,7 @@ const Food = () => {
         `https://api.calorieninjas.com/v1/nutrition?query=${API_KEY}${searchQuery}`
       )
       console.log(response.data.results)
-      setFood(response.data.results)
+      setSearchResults(response.data.results)
     }
     getFoods()
   })

@@ -5,6 +5,7 @@ import Home from './components/Home'
 import LogIn from './pages/LogIn'
 import SignUp from './pages/SignUp'
 import Food from './pages/Food'
+import SignUpGoal from './pages/SignUpGoals'
 
 import './App.css'
 import SignUpLanding from './pages/SignUp'
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<LogIn />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/signupgoal" element={<SignUpGoal />} />
           <Route path="/food" element={<Food />} />
         </Routes>
       </main>
