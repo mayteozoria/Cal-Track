@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
 
-const Register = () => {
+const SignUpGoal = () => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     name: '',
@@ -28,7 +28,7 @@ const Register = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/signin')
+    navigate('/login')
   }
 
   return (
@@ -93,4 +93,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default SignUpGoal
