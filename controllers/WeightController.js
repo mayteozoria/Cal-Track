@@ -11,7 +11,7 @@ const GetWeight = async (req, res) => {
 
 const CreateWeight = async (req, res) => {
   try {
-    const post = await Weight.create({ ...req.body })
+    const weight = await Weight.create({ ...req.body })
     res.send(weight)
   } catch (error) {
     throw error
