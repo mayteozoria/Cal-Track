@@ -1,5 +1,6 @@
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
 import Nav from './components/Nav'
 import Home from './components/Home'
 import LogIn from './pages/LogIn'
@@ -11,6 +12,7 @@ import './App.css'
 import SignUpLanding from './pages/SignUp'
 
 const App = () => {
+  const [user, setUser] = useState(null)
   return (
     <div className="App">
       <header>
@@ -20,7 +22,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<LogIn />} />
+          <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signupgoal" element={<SignUpGoal />} />
           <Route path="/food" element={<Food />} />

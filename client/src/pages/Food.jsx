@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { GetFoods } from '../services/FoodServices'
 import { BASE_URL, API_KEY } from '../globals'
+import Search from '../components/Search'
 
 const Food = () => {
   const [searchQuery, setSearchQuery] = useState('')

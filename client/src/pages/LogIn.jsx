@@ -16,7 +16,7 @@ const LogIn = ({ setUser }) => {
     const payload = await LogInUser(formValues)
     setFormValues({ email: '', password: '' })
     setUser(payload)
-    navigate('/feed')
+    navigate('/food')
   }
 
   return (
