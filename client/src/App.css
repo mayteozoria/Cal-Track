@@ -46,7 +46,7 @@ h1{
  display: flex;
 }
 
-  .inside-box {
+.inside-box {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px,
 		rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 	height: 400px;
@@ -60,31 +60,25 @@ h1{
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-  }
+  } 
 
-
-  
 
 form{
-  width: 100%;
-  padding: 50px;
+  width: 300px;
+  height:300px;
+  padding: 10px;
   /* border-radius: 10px; */
   box-shadow: 10px 10px 5px grey;
   background-color: white;
-}
-
-form,
-.input-wrapper {
-  margin: auto;
-  width: 100%;
-}
-
-form label {
-  align-self: flex-start;
+  margin-left:  auto;
+  margin-right:  auto;
+  position: absolute;
+  top: 200px;
+  left:200px;
 }
 
 .input-wrapper {
-  width: 80%;
+  width: 60%;
   margin: 0;
   padding: 0;
 }
