@@ -22,7 +22,7 @@ const Food = () => {
 
   const handleChange = (e) => {
     e.preventDefault()
-    console.log(searchQuery)
+    // console.log(searchQuery)
     getFoods()
   }
 
