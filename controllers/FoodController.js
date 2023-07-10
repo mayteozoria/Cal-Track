@@ -20,7 +20,7 @@ const CreateFood = async (req, res) => {
 
 const UpdateFood = async (req, res) => {
   try {
-    const food = await Food.findByIdAndUpdate(req.params.post_id, req.body, {
+    const food = await Food.findByIdAndUpdate(req.params.food_id, req.body, {
       new: true
     })
     res.send(food)
@@ -37,7 +37,7 @@ const DeleteFood = async (req, res) => {
     throw error
   }
 }
-module.export = {
+module.exports = {
   GetFoods,
   CreateFood,
   UpdateFood,

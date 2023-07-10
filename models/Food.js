@@ -3,7 +3,8 @@ const { Schema } = require('mongoose')
 const foodSchema = new Schema(
   {
     name: String,
-    quantity: Number,
+    numberOfServings: Number,
+    servingSize: Number,
     calories: Number,
     carbs: Number,
     fats: Number,

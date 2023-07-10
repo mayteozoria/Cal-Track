@@ -6,14 +6,14 @@ router.get('/', controller.GetFoods)
 router.post(
   '/',
   middleware.stripToken,
-  middle.verifyToken,
+  middleware.verifyToken,
   controller.CreateFood
 )
 router.put(
   '/:food_id',
   middleware.stripToken,
   middleware.verifyToken,
-  controller.updateFood
+  controller.UpdateFood
 )
 router.delete(
   '/:food_id',
@@ -21,3 +21,5 @@ router.delete(
   middleware.verifyToken,
   controller.DeleteFood
 )
+
+module.exports = router
