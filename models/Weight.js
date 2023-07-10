@@ -1,6 +1,6 @@
-const { Weight } = require('mongoose')
+const { Schema } = require('mongoose')
 
-const weightSchema = newSchema(
+const weightSchema = new Schema(
   {
     weight: { type: Number }
   },
