@@ -1,7 +1,8 @@
 const Search = (props) => {
   return (
-    <div className="search-foods">
+    <div className="search-form">
       <form onSubmit={props.handleChange}>
+        <h1>Search in Food Database</h1>
         <input
           type="text"
           name="search"
@@ -11,6 +12,8 @@ const Search = (props) => {
         ></input>
         <button type="submit">Search</button>
       </form>
+
+      {/* </div> */}
     </div>
   )
 }

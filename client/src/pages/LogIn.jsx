@@ -22,7 +22,7 @@ const LogIn = ({ setUser }) => {
   return (
     <div className="container">
       <div className="card-overlay centered">
-        <form className="col" onSubmit={handleSubmit}>
+        <form className="form" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
             <input
