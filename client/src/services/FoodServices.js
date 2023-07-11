@@ -8,3 +8,12 @@ export const GetFoods = async () => {
     throw error
   }
 }
+
+export const PostFoods = async (data) => {
+  try {
+    const res = await Client.post('/foods', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

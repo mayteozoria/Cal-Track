@@ -7,9 +7,9 @@ import LogIn from './pages/LogIn'
 import SignUp from './pages/SignUp'
 import Food from './pages/Food'
 import SignUpGoal from './pages/SignUpGoal'
+import Diary from './pages/Diary'
 
 import './App.css'
-import SignUpLanding from './pages/SignUp'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -26,6 +26,7 @@ const App = () => {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signupgoal" element={<SignUpGoal />} />
           <Route path="/food" element={<Food />} />
+          <Route path="/diary" element={<Diary />} />
         </Routes>
       </main>
     </div>
