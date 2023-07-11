@@ -9,7 +9,6 @@ const FoodResults = (props) => {
   const handleAddClick = async (e) => {
     e.preventDefault()
     let newFood = await PostFoods(props.searchResults[0])
-
     console.log(newFood)
   }
 

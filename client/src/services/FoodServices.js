@@ -17,3 +17,11 @@ export const PostFoods = async (data) => {
     throw error
   }
 }
+export const DeleteFoods = async (data) => {
+  try {
+    const res = await Client.delete('/foods', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
