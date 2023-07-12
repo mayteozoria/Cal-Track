@@ -16,13 +16,13 @@ const LogIn = ({ setUser }) => {
     const payload = await LogInUser(formValues)
     setFormValues({ email: '', password: '' })
     setUser(payload)
-    navigate('/food')
+    navigate('/home')
   }
 
   return (
-    <div className="container">
+    <div className="signin col">
       <div className="card-overlay centered">
-        <form className="form" onSubmit={handleSubmit}>
+        <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
             <input
@@ -45,7 +45,7 @@ const LogIn = ({ setUser }) => {
             />
           </div>
           <button disabled={!formValues.email || !formValues.password}>
-            Log In
+            Sign In
           </button>
         </form>
       </div>

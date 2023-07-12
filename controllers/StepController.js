@@ -17,8 +17,28 @@ const CreateStep = async (req, res) => {
     throw error
   }
 }
+const UpdateStep = async (req, res) => {
+  try {
+    const step = await Step.findByIdAndUpdate(req.params.step_id, req.body, {
+      new: true
+    })
+    res.send(step)
+  } catch (error) {
+    throw error
+  }
+}
 
+const DeleteStep = async (req, res) => {
+  try {
+    await Step.deleteOne({ _id: req.params.step_id })
+    res.send({ msg: 'Steps deleted', status: 'Ok' })
+  } catch (error) {
+    throw error
+  }
+}
 module.exports = {
   GetSteps,
-  CreateStep
+  CreateStep,
+  UpdateStep,
+  DeleteStep
 }

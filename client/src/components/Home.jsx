@@ -4,11 +4,12 @@ const Home = () => {
   const navigate = useNavigate()
   return (
     <div className="home">
-      <div className="top-section">
-        <div></div>
-        <div></div>
-      </div>
-      <div></div>
+      <section className="welcome-page">
+        <h1>Home</h1>
+        <button onClick={() => navigate('/diary')}>
+          Click Here To Get Started
+        </button>
+      </section>
     </div>
   )
 }

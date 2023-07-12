@@ -1,6 +1,5 @@
 import axios from 'axios'
 import { useState } from 'react'
-// import { GetFoods } from '../services/FoodServices'
 import { API_KEY } from '../globals'
 import Search from '../components/Search'
 import FoodResults from '../components/FoodResults'

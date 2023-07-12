@@ -4,7 +4,7 @@ const foodSchema = new Schema(
   {
     name: String,
     calories: Number,
-    service_size_g: Number,
+    serving_size_g: Number,
     protein_g: Number,
     carbohydrates_total_g: Number,
     fat_total_g: Number,

@@ -32,7 +32,7 @@ const UpdateFood = async (req, res) => {
 const DeleteFood = async (req, res) => {
   try {
     await Food.deleteOne({ _id: req.params.food_id })
-    res.send({ msg: 'Food Deleted', payload: req.params.food_id, status: 'OK' })
+    res.send({ msg: 'Food Deleted', status: 'OK' })
   } catch (error) {
     throw error
   }
