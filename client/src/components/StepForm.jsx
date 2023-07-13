@@ -34,6 +34,10 @@ const StepForm = () => {
     setDeleteStep((prevState) => (prevState = !prevState))
     console.log(deleteStep)
   }
+
+  const handleEditClick = async (step_id) => {
+    const editStep = await UpdateSteps(step_id)
+  }
   return (
     <div className="step-form">
       <form onSubmit={handleSubmit}>
