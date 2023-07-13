@@ -76,12 +76,6 @@ const StepForm = () => {
                 <td className="steps">{steps.steps}</td>
                 <td className="steps">{steps.description}</td>
                 <td>
-                  {/* <button
-                    className="delete-button"
-                    onClick={() => handleDeleteClick(steps.id)}
-                  >
-                    Delete
-                  </button> */}
                   <input
                     className="delete-button"
                     type="button"
