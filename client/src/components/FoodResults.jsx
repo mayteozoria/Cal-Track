@@ -15,10 +15,6 @@ const FoodResults = (props) => {
     console.log(newFood)
   }
 
-  const handleInputChange = (e) => {
-    setAmount(e.target.value)
-  }
-
   return (
     <div className="search-table">
       <table>

@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
+@import "react-datepicker/dist/react-datepicker.css";
+/* @import 'react-datepicker/dist/react-datepicker-cssmodules.css' */
+
 :root {
   --primary-bg: hsl(223, 18%, 92%);
   --link-color-primary: #1222d7;
@@ -178,3 +181,29 @@ form button:disabled {
   align-items: center;
   height: 80vh;
 }
+.step-table {
+  width: 80%;
+    height: 50vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+table {
+  border: 2px solid blue;
+  width: 600px;
+  height: 50px;
+
+}
+
+th {
+  border-bottom: 1px solid rgb(20, 61, 193);
+  background-color:blue;
+  color:white;
+}
+
+td {
+  text-align: center;
+}
+tr:hover {background-color: #57a3dd;}
+
