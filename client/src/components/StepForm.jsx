@@ -64,10 +64,23 @@ const StepForm = () => {
                 <td className="steps">{steps.steps}</td>
                 <td className="steps">{steps.selectedDate}</td>
                 <td>
+                  {/* <button
+                    className="delete-button"
+                    onClick={() => handleDeleteClick(steps.id)}
+                  >
+                    Delete
+                  </button> */}
                   <input
+                    className="delete-button"
                     typt="button"
                     value="delete"
                     onClick={() => handleDeleteClick(steps._id)}
+                  />
+                  <input
+                    className="edit-button"
+                    typt="button"
+                    value="edit"
+                    onClick={() => handleEditClick(steps._id)}
                   />
                 </td>
               </tr>

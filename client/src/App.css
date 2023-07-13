@@ -219,3 +219,25 @@ td {
 }
 tr:hover {background-color: #57a3dd;}
 
+.delete-button {
+  width:10%;
+  background-color: blue; 
+  border: none;
+  color: white;
+  padding: 15px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.edit-button {
+  width:10%;
+  background-color: blue; 
+  border: none;
+  color: white;
+  padding: 15px 12px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
