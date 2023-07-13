@@ -3,7 +3,6 @@ const logger = require('morgan')
 const cors = require('cors')
 
 const AuthRouter = require('./routes/AuthRouter')
-
 const FoodRouter = require('./routes/FoodRouter')
 const StepRouter = require('./routes/StepRouter')
 const WeightRouter = require('./routes/WeightRouter')
@@ -20,7 +19,6 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.use('/auth', AuthRouter)
-
 app.use('/foods', FoodRouter)
 app.use('/steps', StepRouter)
 app.use('/weight', WeightRouter)

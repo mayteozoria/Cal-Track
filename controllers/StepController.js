@@ -12,6 +12,7 @@ const GetSteps = async (req, res) => {
 const CreateStep = async (req, res) => {
   try {
     const step = await Step.create({ ...req.body })
+
     res.send(step)
   } catch (error) {
     throw error

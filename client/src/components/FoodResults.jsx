@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { PostFoods } from '../services/FoodServices'
-import AddFood from './AddFood'
+// import AddFood from './AddFood'
 
 const FoodResults = (props) => {
   const [newFood, setFood] = useState(0)

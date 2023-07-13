@@ -1,31 +1,37 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { GetSteps } from '../services/StepServices'
 
-const StepForm = ({ addStep }) => {
-  const [title, setTitle] = useState('')
+const StepForm = () => {
+  const [steps, setSteps] = useState([])
+  const [count, setCount] = useState([])
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (title.trim() !== '') {
-      const newStep = {
-        id: Date.now(),
-        title: title.trim()
-      }
-      addStep(newStep)
-      setTitle('')
+  useEffect(() => {
+    const handleStep = async () => {
+      const steps = await GetSteps()
+      setSteps(steps)
+      console.log(steps)
     }
-  }
+    handleStep()
+  }, [])
+
+  const handleAddStep = () => {}
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter steps"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <button type="submit">Add Step</button>
-      </form>
+      <input
+        type="number"
+        placeholder="Enter steps"
+        value={count}
+        // onChange={handleInputChange}
+      />
+      <button onClick={handleAddStep}>Add Step</button>
+      <div>
+        {steps.map((steps) => (
+          <div key={steps._id}>
+            <div>{steps.steps}</div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
