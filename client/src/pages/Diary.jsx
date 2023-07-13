@@ -63,11 +63,11 @@ const Diary = (props) => {
                   />
                 </td>
                 <td>
-                  <input
+                  {/* <input
                     type="button"
                     value="edit"
                     onClick={() => handleEditClick(item._id)}
-                  />
+                  /> */}
                 </td>
               </tr>
             ))}
