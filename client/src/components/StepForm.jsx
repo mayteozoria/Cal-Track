@@ -5,8 +5,9 @@ import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 
 const StepForm = () => {
   const [steps, setSteps] = useState([])
-  const [newStep, setNewStep] = useState({ steps: '' })
+  const [newStep, setNewStep] = useState({ description: '', steps: '' })
   const [deleteStep, setDeleteStep] = useState(false)
+  const [editStep, setEditStep] = useState('')
   // const [selectedDate, setSelectedDate] = useState(new Date())
 
   useEffect(() => {
@@ -22,11 +23,11 @@ const StepForm = () => {
     e.preventDefault()
     const newSteps = await PostSteps(newStep)
     setSteps([...steps, newSteps])
-    setNewStep({ steps: '' })
+    setNewStep({ description: '', steps: '' })
     console.log(newSteps)
   }
   const handleChange = (e) => {
-    setNewStep({ ...newStep, steps: e.target.value })
+    setNewStep({ ...newStep, [e.target.name]: e.target.value })
   }
 
   const handleDeleteClick = async (step_id) => {
@@ -48,6 +49,13 @@ const StepForm = () => {
           value={newStep.steps}
           onChange={handleChange}
         />
+        <input
+          type="text"
+          name="description"
+          placeholder="Walking"
+          value={newStep.description}
+          onChange={handleChange}
+        />
         {/* <DatePicker
           selectedDate={selectedDate}
           onChange={(date) => setSelectedDate(date)}
@@ -66,7 +74,7 @@ const StepForm = () => {
             {steps.map((steps) => (
               <tr key={steps._id}>
                 <td className="steps">{steps.steps}</td>
-                <td className="steps">{steps.selectedDate}</td>
+                <td className="steps">{steps.description}</td>
                 <td>
                   {/* <button
                     className="delete-button"
@@ -76,13 +84,13 @@ const StepForm = () => {
                   </button> */}
                   <input
                     className="delete-button"
-                    typt="button"
+                    type="button"
                     value="delete"
                     onClick={() => handleDeleteClick(steps._id)}
                   />
                   <input
                     className="edit-button"
-                    typt="button"
+                    type="button"
                     value="edit"
                     onClick={() => handleEditClick(steps._id)}
                   />
