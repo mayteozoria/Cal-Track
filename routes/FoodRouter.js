@@ -2,7 +2,12 @@ const router = require('express').Router()
 const controller = require('../controllers/FoodController')
 const middleware = require('../middleware')
 
-router.get('/', controller.GetFoods)
+router.get(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetFoods
+)
 router.post(
   '/',
   middleware.stripToken,

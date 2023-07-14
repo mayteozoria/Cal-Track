@@ -3,7 +3,8 @@ const { Schema } = require('mongoose')
 const stepSchema = new Schema(
   {
     steps: { type: Number, required: true },
-    date: { type: Date, default: Date.now }
+    description: { type: String }
+    // Date: { type: Date, required: true }
   },
   { timestamps: true }
 )

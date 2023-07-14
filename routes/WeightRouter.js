@@ -9,5 +9,17 @@ router.post(
   middleware.verifyToken,
   controller.CreateWeight
 )
+router.put(
+  '/:weight_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.UpdateWeight
+)
+router.delete(
+  '/:weight_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteWeight
+)
 
 module.exports = router

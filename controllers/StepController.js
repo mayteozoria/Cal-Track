@@ -1,4 +1,5 @@
 const { Step } = require('../models')
+// const middleware = require('../middleware')
 
 const GetSteps = async (req, res) => {
   try {
@@ -21,7 +22,7 @@ const CreateStep = async (req, res) => {
 const UpdateStep = async (req, res) => {
   try {
     const step = await Step.findByIdAndUpdate(req.params.step_id, req.body, {
-      new: true
+      new: false
     })
     res.send(step)
   } catch (error) {

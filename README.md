@@ -13,7 +13,7 @@
 
 ## **Description**
 
-#### :muscle: _Cal-track is an app that allows users to track their calories, exercises, goals, and post their accomplishments. The app tracks proteins, carbs,   fats, sodium, and sugar. Breakfast, lunch and dinner can be separetly added to the daily food log. As the user logs their meals, the app calculates their total calories and returns the remaining calories left for the day._
+#### :muscle: _Cal-track is an app that allows users to track their calories, steps, and calculate thier BMR . The app tracks proteins, carbs,   fats, sodium, and sugar. Breakfast, lunch and dinner can be separetly added to the daily food log. As the user logs their meals, the app calculates their total calories and returns the remaining calories left for the day._
 #### !<img src="cal-track%20.png" width=50% height=50%>
 
 
