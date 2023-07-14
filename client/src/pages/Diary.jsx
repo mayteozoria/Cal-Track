@@ -1,10 +1,11 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
+// import TotalCalorie from '../components/TotalCalorie'
 
 const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
   const [deleteFood, setDeleteFood] = useState(false)
-  // const [editFood, setEditFood] = useEffect(false)
+  const [totalCalories, setTotalCalories] = useState(0)
 
   useEffect(() => {
     const handleFood = async () => {
@@ -13,6 +14,7 @@ const Diary = (props) => {
       // console.log(foods)
     }
     handleFood()
+    calculateCalories()
   }, [deleteFood])
 
   const handleDeleteClick = async (food_id) => {
@@ -20,10 +22,13 @@ const Diary = (props) => {
     setDeleteFood((prevState) => (prevState = !prevState))
     console.log(deleteFood)
   }
-  // const handleEditClick = async (food_id) => {
-  //   const editFood = await UpdateFood(food_id)
-  //   setEditFood()
-  // }
+
+  const calculateCalories = () => {
+    const total = allFoods.reduce((sum, allFoods) => sum + allFoods.calories, 0)
+
+    setTotalCalories(total)
+    console.log(total)
+  }
   return (
     <div className="diary">
       <h3>Your Food Diary:</h3>
@@ -66,9 +71,9 @@ const Diary = (props) => {
             ))}
           </tbody>
         </table>
+        <tr>totalCalories:{totalCalories}</tr>
       </div>
     </div>
   )
 }
-
 export default Diary
