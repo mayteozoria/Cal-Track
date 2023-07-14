@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import dbblue from '/dbblue.png'
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -12,12 +13,15 @@ const Nav = ({ user, handleLogOut }) => {
         <Link onClick={handleLogOut} to="/">
           Log Out
         </Link>
+        <Link to="/">Home</Link>
+        {/* <img src={dbblue} alt="dbbell" height={20} /> */}
       </nav>
     )
   }
 
   const publicOptions = (
     <nav className="navbar">
+      {/* <img src={dbblue} alt="dbbell" height={30} /> */}
       <h3>myCalTrack</h3>
       <Link to="/signup">Sign Up</Link>
       <Link to="/login">Log In</Link>

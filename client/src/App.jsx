@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
 // import 'react-date-picker/dist/react-datepicker.css'
 import Nav from './components/Nav'
-// import Home from './components/Home'
+import Home from './components/Home'
 import LogIn from './pages/LogIn'
 import SignUp from './pages/SignUp'
 import Food from './pages/Food'
@@ -38,9 +38,10 @@ const App = () => {
   return (
     <div className="App">
       <Nav user={user} handleLogOut={handleLogOut} />
+
       <main>
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<LogIn setUser={setUser} />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/food" element={<Food />} />
