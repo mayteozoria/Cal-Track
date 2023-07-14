@@ -43,9 +43,11 @@ const FoodResults = (props) => {
               <td>{item.fat_total_g}g</td>
               <td>{item.sugar_g}g</td>
               <td>{item.sodium_mg}mg</td>
-              <button type="button" onClick={handleAddClick}>
-                Add Food to Diary
-              </button>
+              <td>
+                <button type="button" onClick={handleAddClick}>
+                  Add Food to Diary
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>

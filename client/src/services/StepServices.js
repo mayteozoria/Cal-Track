@@ -17,7 +17,7 @@ export const PostSteps = async (data) => {
     throw error
   }
 }
-export const UpdateSteps = async (req, res) => {
+export const UpdateSteps = async (id) => {
   try {
     const res = await Client.update(`/steps/${id}`)
     return res.data

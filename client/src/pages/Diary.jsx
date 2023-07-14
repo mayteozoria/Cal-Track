@@ -1,4 +1,4 @@
-import { GetFoods, DeleteFoods, UpdateFood } from '../services/FoodServices'
+import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
 
 const Diary = (props) => {
@@ -61,13 +61,6 @@ const Diary = (props) => {
                     value="delete"
                     onClick={() => handleDeleteClick(item._id)}
                   />
-                </td>
-                <td>
-                  {/* <input
-                    type="button"
-                    value="edit"
-                    onClick={() => handleEditClick(item._id)}
-                  /> */}
                 </td>
               </tr>
             ))}
