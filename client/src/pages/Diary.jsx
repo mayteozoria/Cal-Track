@@ -31,13 +31,14 @@ const Diary = (props) => {
 
   const calculateCalories = (foods) => {
     const total = foods.reduce((sum, foods) => sum + foods.calories, 0)
-
-    setTotalCalories(total)
+    let newCal = Math.trunc(total)
+    setTotalCalories(newCal)
   }
   const calculateProtein = (foods) => {
     const protein = foods.reduce((sum, foods) => sum + foods.protein_g, 0)
-    setTotalProtein(protein)
-    console.log(protein)
+    let newProtein = Math.trunc(protein)
+    setTotalProtein(newProtein)
+    console.log(newProtein)
   }
   const calculateCarbs = (foods) => {
     const carbs = foods.reduce(
