@@ -6,8 +6,7 @@ const Step = () => {
 
   return (
     <div>
-      <StepForm steps={steps} set={setSteps} />
-      {/* <StepTracker /> */}
+      <StepForm steps={steps} setSteps={setSteps} />
     </div>
   )
 }
