@@ -17,7 +17,33 @@ const CreateWeight = async (req, res) => {
     throw error
   }
 }
+
+const UpdateWeight = async (req, res) => {
+  try {
+    const step = await Weight.findByIdAndUpdate(
+      req.params.weight_id,
+      req.body,
+      {
+        new: false
+      }
+    )
+    res.send(step)
+  } catch (error) {
+    throw error
+  }
+}
+
+const DeleteWeight = async (req, res) => {
+  try {
+    await Step.deleteOne({ _id: req.params.weight_id })
+    res.send({ msg: 'Weight deleted', status: 'Ok' })
+  } catch (error) {
+    throw error
+  }
+}
 module.exports = {
   GetWeight,
-  CreateWeight
+  CreateWeight,
+  UpdateWeight,
+  DeleteWeight
 }
