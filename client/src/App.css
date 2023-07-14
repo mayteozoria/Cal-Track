@@ -173,18 +173,6 @@ form button:disabled {
   padding: 1em;
   text-align: center;
 }
-/* 
-.card p {
-  height: 50px;
-}
-
-.card h3 {
-  height: 50px;
-}
-
-.card img {
-  width: 100%;
-} */
 
 .protected {
   display: flex;
@@ -240,4 +228,31 @@ tr:hover {background-color: #57a3dd;}
   text-decoration: none;
   display: inline-block;
   font-size: 12px;
+}
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.container {
+  padding: 64px;
+  text-align:center;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both
+}
+
+.column-66 {
+  float: left;
+  width: 66.66666%;
+  padding: 20px;
+}
+
+.column-33 {
+  float: left;
+  width: 33.33333%;
+  padding: 20px;
 }
