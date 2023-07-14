@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
-import { GetSteps, PostSteps, DeleteSteps } from '../services/StepServices'
+import {
+  GetSteps,
+  PostSteps,
+  DeleteSteps,
+  UpdateSteps
+} from '../services/StepServices'
 // import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker-cssmodules.css'
 import AddStep from './AddStep'
@@ -8,13 +13,12 @@ const StepForm = () => {
   const [steps, setSteps] = useState([])
   const [newStep, setNewStep] = useState({ description: '', steps: '' })
   const [deleteStep, setDeleteStep] = useState(false)
-  const [editForm, setEditForm] = useState('')
+  const [editStep, setEditStep] = useState([])
 
   useEffect(() => {
     const handleStep = async () => {
       const steps = await GetSteps()
       setSteps(steps)
-      console.log(steps)
     }
     handleStep()
   }, [deleteStep])
@@ -24,7 +28,6 @@ const StepForm = () => {
     const newSteps = await PostSteps(newStep)
     setSteps([...steps, newSteps])
     setNewStep({ description: '', steps: '' })
-    console.log(newSteps)
   }
   const handleChange = (e) => {
     setNewStep({ ...newStep, [e.target.name]: e.target.value })
@@ -33,12 +36,13 @@ const StepForm = () => {
   const handleDeleteClick = async (step_id) => {
     const deleteStep = await DeleteSteps(step_id)
     setDeleteStep((prevState) => (prevState = !prevState))
-    console.log(deleteStep)
   }
 
-  const handleEditClick = (e, step_id) => {
-    e.preventDefault()
-    setEditForm(step_id)
+  const handleEditClick = async (step_id) => {
+    const editSteps = await UpdateSteps(step_id)
+    setEditStep([...steps, editStep])
+    setNewStep({ description: '', steps: '' })
+    console.log(step_id)
   }
   return (
     <div>
@@ -63,7 +67,7 @@ const StepForm = () => {
                     className="edit-button"
                     type="button"
                     value="edit"
-                    onClick={(e) => handleEditClick(steps.id)}
+                    onClick={(e) => handleEditClick(steps._id)}
                   />
                 </td>
                 <td>

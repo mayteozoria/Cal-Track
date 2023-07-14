@@ -6,13 +6,10 @@ const FoodResults = (props) => {
   const [newFood, setFood] = useState(0)
   const [amount, setAmount] = useState(0)
 
-  console.log(props.searchResults)
-
   const handleAddClick = async (e) => {
     e.preventDefault()
     let newFood = await PostFoods(props.searchResults[0])
     setAmount('')
-    console.log(newFood)
   }
 
   return (

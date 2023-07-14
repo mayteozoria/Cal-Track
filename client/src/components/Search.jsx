@@ -12,8 +12,6 @@ const Search = (props) => {
         ></input>
         <button type="submit">Search</button>
       </form>
-
-      {/* </div> */}
     </div>
   )
 }

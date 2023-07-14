@@ -19,7 +19,7 @@ export const PostSteps = async (data) => {
 }
 export const UpdateSteps = async (id) => {
   try {
-    const res = await Client.update(`/steps/${id}`)
+    const res = await Client.put(`/steps/${id}`)
     return res.data
   } catch (error) {
     throw error

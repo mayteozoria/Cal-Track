@@ -26,7 +26,6 @@ const Diary = (props) => {
   const handleDeleteClick = async (food_id) => {
     const deleteFood = await DeleteFoods(food_id)
     setDeleteFood((prevState) => (prevState = !prevState))
-    console.log(deleteFood)
   }
 
   const calculateCalories = (foods) => {
@@ -95,10 +94,16 @@ const Diary = (props) => {
           </tbody>
         </table>
         <div>
-          <td>Total Calories:{totalCalories}</td>
-          <td>Carbs:{totalCarbs}</td>
-          <td>Fats:{totalFats}</td>
-          <td>Protein:{totalProtein}</td>
+          <table>
+            <tbody>
+              <tr>
+                <td>Total Calories:{totalCalories}</td>
+                <td>Carbs:{totalCarbs}</td>
+                <td>Fats:{totalFats}</td>
+                <td>Protein:{totalProtein}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
