@@ -6,6 +6,7 @@ const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
   const [deleteFood, setDeleteFood] = useState(false)
   const [totalCalories, setTotalCalories] = useState(0)
+  const [totalCarbs, setTotalCarbs] = useState(0)
 
   useEffect(() => {
     const handleFood = async () => {
@@ -15,6 +16,7 @@ const Diary = (props) => {
     }
     handleFood()
     calculateCalories()
+    calculateCarbs()
   }, [deleteFood])
 
   const handleDeleteClick = async (food_id) => {
@@ -28,6 +30,14 @@ const Diary = (props) => {
 
     setTotalCalories(total)
     console.log(total)
+  }
+  const calculateCarbs = () => {
+    const carbs = allFoods.reduce(
+      (sum, allFoods) => sum + allFoods.carbohydrates_total_g,
+      0
+    )
+    setTotalCarbs(carbs)
+    console.log(carbs)
   }
   return (
     <div className="diary">
@@ -71,7 +81,11 @@ const Diary = (props) => {
             ))}
           </tbody>
         </table>
-        <tr>totalCalories:{totalCalories}</tr>
+        <tr>
+          totalCalories:
+          <tr>{totalCalories}</tr>
+          <tr>totalCarbs:{totalCarbs}</tr>
+        </tr>
       </div>
     </div>
   )
