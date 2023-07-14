@@ -1,22 +1,26 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
-// import TotalCalorie from '../components/TotalCalorie'
 
 const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
   const [deleteFood, setDeleteFood] = useState(false)
   const [totalCalories, setTotalCalories] = useState(0)
   const [totalCarbs, setTotalCarbs] = useState(0)
+  const [totalFats, setTotalFats] = useState(0)
+  const [totalProtein, setTotalProtein] = useState(0)
 
   useEffect(() => {
     const handleFood = async () => {
       const foods = await GetFoods()
       setAllFoods(foods)
-      // console.log(foods)
+
+      calculateCalories(foods)
+      calculateCarbs(foods)
+      calculateFats(foods)
+      calculateProtein(foods)
     }
+
     handleFood()
-    calculateCalories()
-    calculateCarbs()
   }, [deleteFood])
 
   const handleDeleteClick = async (food_id) => {
@@ -25,19 +29,28 @@ const Diary = (props) => {
     console.log(deleteFood)
   }
 
-  const calculateCalories = () => {
-    const total = allFoods.reduce((sum, allFoods) => sum + allFoods.calories, 0)
+  const calculateCalories = (foods) => {
+    const total = foods.reduce((sum, foods) => sum + foods.calories, 0)
 
     setTotalCalories(total)
-    console.log(total)
   }
-  const calculateCarbs = () => {
-    const carbs = allFoods.reduce(
-      (sum, allFoods) => sum + allFoods.carbohydrates_total_g,
+  const calculateProtein = (foods) => {
+    const protein = foods.reduce((sum, foods) => sum + foods.protein_g, 0)
+    setTotalProtein(protein)
+    console.log(protein)
+  }
+  const calculateCarbs = (foods) => {
+    const carbs = foods.reduce(
+      (sum, foods) => sum + foods.carbohydrates_total_g,
       0
     )
     setTotalCarbs(carbs)
     console.log(carbs)
+  }
+  const calculateFats = (foods) => {
+    const fats = foods.reduce((sum, foods) => sum + foods.fat_total_g, 0)
+    setTotalFats(fats)
+    console.log(fats)
   }
   return (
     <div className="diary">
@@ -81,11 +94,12 @@ const Diary = (props) => {
             ))}
           </tbody>
         </table>
-        <tr>
-          totalCalories:
-          <tr>{totalCalories}</tr>
-          <tr>totalCarbs:{totalCarbs}</tr>
-        </tr>
+        <div>
+          <td>Total Calories:{totalCalories}</td>
+          <td>Carbs:{totalCarbs}</td>
+          <td>Fats:{totalFats}</td>
+          <td>Protein:{totalProtein}</td>
+        </div>
       </div>
     </div>
   )
