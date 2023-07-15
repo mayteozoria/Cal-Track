@@ -1,12 +1,10 @@
 import './App.css'
-
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
-// import 'react-date-picker/dist/react-datepicker.css'
 import Nav from './components/Nav'
 import Home from './components/Home'
-import LogIn from './pages/LogIn'
+import NewLogIn from './pages/NewLogIn'
 import Food from './pages/Food'
 import Step from './pages/Step'
 import Weight from './pages/Weight'
@@ -42,9 +40,10 @@ const App = () => {
 
       <main>
         <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/login" element={<LogIn setUser={setUser} />} />
-          {/* <Route path="/signup" element={<SignUp />} /> */}
+          <Route path="/" element={<Home />} />
+          <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} />
+          {/* <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} /> */}
+
           <Route path="/food" element={<Food />} />
           <Route path="/step" element={<Step />} />
           <Route path="/diary" element={<Diary />} />

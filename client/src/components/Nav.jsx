@@ -21,7 +21,7 @@ const Nav = ({ user, handleLogOut }) => {
     <nav className="navbar">
       <h3>myCalTrack</h3>
       <Link to="/newsignup">Sign Up</Link>
-      <Link to="/login">Log In</Link>
+      <Link to="/newlogin">Log In</Link>
       {/* <Link className="split" to="/">
         myCalTrack
       </Link> */}

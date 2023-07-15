@@ -1,3 +1,7 @@
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { LogInUser } from '../services/Auth'
+
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
@@ -13,7 +17,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import Typography from '@mui/material/Typography'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
-function Copyright(props) {
+const Copyright = (props) => {
   return (
     <Typography
       variant="body2"
@@ -23,7 +27,7 @@ function Copyright(props) {
     >
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        CalTrack
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -35,15 +39,31 @@ function Copyright(props) {
 
 const defaultTheme = createTheme()
 
-export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    console.log({
-      email: data.get('email'),
-      password: data.get('password')
-    })
+const NewLogIn = ({ setUser }) => {
+  let navigate = useNavigate()
+
+  const [formValues, setFormValues] = useState({ email: '', password: '' })
+
+  const handleChange = (e) => {
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const payload = await LogInUser(formValues)
+    setFormValues({ email: '', password: '' })
+    setUser(payload)
+    navigate('/home')
+  }
+
+  // const handleSubmit = (event) => {
+  //   event.preventDefault()
+  //   const data = new FormData(event.currentTarget)
+  //   console.log({
+  //     email: data.get('email'),
+  //     password: data.get('password')
+  //   })
+  // }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -89,16 +109,19 @@ export default function SignInSide() {
               sx={{ mt: 1 }}
             >
               <TextField
+                onChange={handleChange}
                 margin="normal"
                 required
                 fullWidth
                 id="email"
                 label="Email Address"
                 name="email"
+                value={formValues.email}
                 autoComplete="email"
                 autoFocus
               />
               <TextField
+                onChange={handleChange}
                 margin="normal"
                 required
                 fullWidth
@@ -106,6 +129,7 @@ export default function SignInSide() {
                 label="Password"
                 type="password"
                 id="password"
+                value={formValues.password}
                 autoComplete="current-password"
               />
               <FormControlLabel
@@ -117,6 +141,7 @@ export default function SignInSide() {
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                disabled={!formValues.email || !formValues.password}
               >
                 Sign In
               </Button>
@@ -127,8 +152,8 @@ export default function SignInSide() {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}
+                  <Link to="/newsignup" href="#" variant="body2">
+                    {"Don't have an account? Sign Up"}{' '}
                   </Link>
                 </Grid>
               </Grid>
@@ -140,3 +165,4 @@ export default function SignInSide() {
     </ThemeProvider>
   )
 }
+export default NewLogIn
