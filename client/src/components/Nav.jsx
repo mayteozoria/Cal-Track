@@ -23,7 +23,7 @@ const Nav = ({ user, handleLogOut }) => {
     <nav className="navbar">
       {/* <img src={dbblue} alt="dbbell" height={30} /> */}
       <h3>myCalTrack</h3>
-      <Link to="/signup">Sign Up</Link>
+      <Link to="/newsignup">Sign Up</Link>
       <Link to="/login">Log In</Link>
       {/* <Link className="split" to="/">
         myCalTrack
