@@ -7,7 +7,6 @@ import { CheckSession } from './services/Auth'
 import Nav from './components/Nav'
 import Home from './components/Home'
 import LogIn from './pages/LogIn'
-import SignUp from './pages/SignUp'
 import Food from './pages/Food'
 import Step from './pages/Step'
 import Weight from './pages/Weight'
@@ -45,7 +44,7 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<LogIn setUser={setUser} />} />
-          <Route path="/signup" element={<SignUp />} />
+          {/* <Route path="/signup" element={<SignUp />} /> */}
           <Route path="/food" element={<Food />} />
           <Route path="/step" element={<Step />} />
           <Route path="/diary" element={<Diary />} />
