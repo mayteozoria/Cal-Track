@@ -1,6 +1,5 @@
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import dbblue from '/dbblue.png'
-import food from '/food.png'
 
 const Home = () => {
   // const navigate = useNavigate()
@@ -13,7 +12,11 @@ const Home = () => {
             Caltrack. The app tracks proteins, carbs, fats, sodium, and sugar.
             Breakfast, lunch and dinner can be separetly added to the daily food
             log. As the user logs their meals, the app calculates their total
-            calories and returns the remaining calories left for the day
+            calories and returns the remaining calories left for the day.
+            <br></br>
+            <Link to="/macroCalculator">
+              <button>Calculate my macros</button>
+            </Link>
           </p>
         </div>
         <div className="column-33">

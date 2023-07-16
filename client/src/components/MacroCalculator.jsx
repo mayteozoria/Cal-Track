@@ -1,100 +1,139 @@
-import React from 'react'
-function calculateMacros(weight, ratio) {
-  var totalCalories
-  var proteinInGrams
-  var carbsInGrams
-  var fatInGrams
+import React, { useState, useEffect } from 'react'
+import {
+  Grid,
+  Button,
+  TextField,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
+} from '@mui/material'
+// import { GetWeight } from './services/WeightServices'
 
-  if (ratio === 'fatloss') {
-    totalCalories = weight * 11
-    proteinInGrams = Math.round((totalCalories / 2 / 4) * 10) / 10
-    carbsInGrams = Math.round((totalCalories / 4 / 4) * 10) / 10
-    fatInGrams = Math.round((totalCalories / 4 / 9) * 10) / 10
-  }
+const MacroCalculator = () => {
+  const [heightFeet, setHeightFeet] = useState('')
+  const [heightInches, setHeightInches] = useState('')
+  const [weight, setWeight] = useState('')
+  const [age, setAge] = useState('')
+  const [gender, setGender] = useState('')
+  const [activityLevel, setActivityLevel] = useState('')
+  const [calories, setCalories] = useState('')
+  const [goal, setGoal] = useState('')
+  const [goalLevel, setGoalLevel] = useState('')
 
-  if (ratio === 'moderate') {
-    totalCalories = weight * 11
-    proteinInGrams = Math.round(((totalCalories * 0.4) / 4) * 10) / 10
-    carbsInGrams = Math.round(((totalCalories * 0.3) / 4) * 10) / 10
-    fatInGrams = Math.round(((totalCalories * 0.3) / 9) * 10) / 10
-  }
+  const calculateCalories = () => {
+    const totalHeightInches =
+      parseInt(heightFeet, 10) * 12 + parseInt(heightInches, 10)
 
-  return {
-    proteinInGrams,
-    carbsInGrams,
-    fatInGrams
-  }
-}
-
-export default function CalculatorForm() {
-  const [weight, setWeight] = React.useState('')
-  const [protein, setProtein] = React.useState(0)
-  const [carbs, setCarbs] = React.useState(0)
-  const [fat, setFat] = React.useState(0)
-  const [ratio, setRatio] = React.useState('fatloss')
-
-  function handleChange(e) {
-    if (e.target.value === '') {
-      setWeight('')
+    let bmr
+    if (gender === 'male') {
+      bmr = 66 + 6.2 * weight + 12.7 * totalHeightInches - 6.76 * age
+    } else if (gender === 'female') {
+      bmr = 655 + 4.35 * weight + 4.7 * totalHeightInches - 4.7 * age
     } else {
-      setWeight(parseInt(e.target.value))
+      return
     }
+
+    let tdee
+    switch (activityLevel) {
+      case 'sedentary':
+        tdee = bmr * 1.2
+        break
+      case 'lightlyActive':
+        tdee = bmr * 1.375
+        break
+      case 'moderatelyActive':
+        tdee = bmr * 1.55
+        break
+      case 'veryActive':
+        tdee = bmr * 1.725
+        break
+      case 'extraActive':
+        tdee = bmr * 1.9
+        break
+      default:
+        return
+    }
+
+    const weightLossCalories = tdee - 500
+
+    setCalories(weightLossCalories)
   }
-  function handleSubmit(e) {
-    e.preventDefault()
-    const { proteinInGrams, carbsInGrams, fatInGrams } = calculateMacros(
-      weight,
-      ratio
-    )
-    setProtein(proteinInGrams)
-    setCarbs(carbsInGrams)
-    setFat(fatInGrams)
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value)
+  }
+
+  const handleActivityLevelChange = (e) => {
+    setActivityLevel(e.target.value)
   }
 
   return (
-    <>
-      <form className="Form" onSubmit={handleSubmit}>
-        <label htmlFor="weight">
-          <input
-            type="text"
-            id="weight"
-            name="weight"
-            placeholder="Current weight"
-            value={weight}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="Form__radio">
-          <input
-            type="radio"
-            name="ratio"
-            value="fatloss"
-            checked={ratio === 'fatloss'}
-            className="Form__input"
-            onClick={() => setRatio('fatloss')}
-          />
-          <span className="Form__span">50%, 25%, 25%</span>
-        </label>
-        <label className="Form__radio">
-          <input
-            type="radio"
-            name="ratio"
-            value="moderate"
-            checked={ratio === 'moderate'}
-            className="Form__input"
-            onClick={() => setRatio('moderate')}
-          />
-          <span className="Form__span">40%, 30%, 30%</span>
-        </label>
-        <button type="submit">Calculate</button>
-        {protein > 0 && (
-          <div className="Result">
-            <p>Protein: {protein}g</p>
-            <p>Carbs: {carbs}g</p>
-            <p>Fat: {fat}g</p>
-          </div>
-        )}
-      </form>
-    </>
+    <div>
+      <h1> Weight Loss Calories</h1>
+      <FormControl>
+        <TextField
+          label="Height (feet)"
+          value={heightFeet}
+          onChange={(e) => setHeightFeet(e.target.value)}
+        />
+      </FormControl>
+      <FormControl>
+        <TextField
+          label="Height (inches)"
+          value={heightInches}
+          onChange={(e) => setHeightInches(e.target.value)}
+        />
+      </FormControl>
+      <FormControl>
+        <TextField
+          label="Weight (lbs)"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+        />
+      </FormControl>
+      <FormControl>
+        <TextField
+          label="Age"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+      </FormControl>
+      <FormControl>
+        <InputLabel>Gender</InputLabel>
+        <Select value={gender} onChange={handleGenderChange}>
+          <MenuItem value="male">Male</MenuItem>
+          <MenuItem value="female">Female</MenuItem>
+        </Select>
+      </FormControl>
+      <FormControl>
+        <InputLabel>Activity Level</InputLabel>
+        <Select value={activityLevel} onChange={handleActivityLevelChange}>
+          <MenuItem value="sedentary">
+            Sedentary (little to no exercise)
+          </MenuItem>
+          <MenuItem value="lightlyActive">
+            Lightly Active (light exercise/sports 1-3 days/week)
+          </MenuItem>
+          <MenuItem value="moderatelyActive">
+            Moderately Active (moderate exercise/sports 3-5 days/week)
+          </MenuItem>
+          <MenuItem value="veryActive">
+            Very Active (hard exercise/sports 6-7 days/week)
+          </MenuItem>
+          <MenuItem value="extraActive">
+            Extra Active (very hard exercise/sports & physical job or 2x
+            training)
+          </MenuItem>
+        </Select>
+      </FormControl>
+
+      <Button variant="contained" color="primary" onClick={calculateCalories}>
+        Calculate
+      </Button>
+      {calories && <p>Calories for weight loss: {calories} calories per day</p>}
+    </div>
   )
 }
+
+export default MacroCalculator

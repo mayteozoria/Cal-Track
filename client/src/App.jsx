@@ -12,6 +12,7 @@ import Diary from './pages/Diary'
 import NewSignUp from './pages/NewSignUp'
 
 import './App.css'
+import MacroCalculator from './components/MacroCalculator'
 
 const App = () => {
   const [user, setUser] = useState(null)
@@ -40,7 +41,7 @@ const App = () => {
 
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} />
           {/* <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} /> */}
 
@@ -48,6 +49,8 @@ const App = () => {
           <Route path="/step" element={<Step />} />
           <Route path="/diary" element={<Diary />} />
           <Route path="/weight" element={<Weight />} />
+          <Route path="/macrocalculator" element={<MacroCalculator />} />
+          <Route path="/login" element={<NewLogIn />} />
           <Route path="/newsignup" element={<NewSignUp />} />
         </Routes>
       </main>

@@ -28,7 +28,7 @@ const SignUp = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/login')
+    navigate('/weight')
   }
 
   return (

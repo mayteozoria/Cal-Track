@@ -1,17 +1,18 @@
-import { useState } from 'react'
-
 const AddWeight = (props) => {
-  const [height, setHeight] = useState(0)
-  const [weight, setWeight] = useState(0)
-  const [bmi, setBmi] = useState(0)
-  const [bmr, newBmr] = useState(0)
-
-  let calcBmi = (e) => {
-    e.preventDefault()
-    if (weight === 0 || height === 0) {
-      console.log('')
-    }
-  }
-  return <div></div>
+  return (
+    <div>
+      <h1>Enter Weight</h1>
+      <form onSubmit={props.handleSubmit}>
+        <input
+          type="number"
+          name="weight"
+          placeholder="Enter lbs"
+          value={props.newWeight.weight}
+          onChange={props.handleChange}
+        />
+        <button>Add Step</button>
+      </form>
+    </div>
+  )
 }
 export default AddWeight

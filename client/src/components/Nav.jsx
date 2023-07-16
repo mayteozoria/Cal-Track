@@ -12,7 +12,7 @@ const Nav = ({ user, handleLogOut }) => {
         <Link onClick={handleLogOut} to="/">
           Log Out
         </Link>
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
       </nav>
     )
   }

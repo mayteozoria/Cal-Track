@@ -5,8 +5,7 @@ import {
   DeleteSteps,
   UpdateSteps
 } from '../services/StepServices'
-// import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker-cssmodules.css'
+
 import AddStep from './AddStep'
 
 const StepForm = () => {

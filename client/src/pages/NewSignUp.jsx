@@ -62,7 +62,7 @@ const NewSignUp = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/login')
+    navigate('/home')
   }
 
   // const handleSubmit = (event) => {
