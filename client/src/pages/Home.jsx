@@ -2,28 +2,22 @@ import { Link } from 'react-router-dom'
 import dbblue from '/dbblue.png'
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter'
 
-const Home = () => {
+const About = () => {
   // const navigate = useNavigate()
   return (
     <div className="container">
       <div className="row">
         <div className="column-66">
           <p>
-            Meet your health goals by tracking your calories and steps in
-            Caltrack. The app tracks proteins, carbs, fats, sodium, and sugar.
-            Breakfast, lunch and dinner can be separetly added to the daily food
-            log. As the user logs their meals, the app calculates their total
-            calories and returns the remaining calories left for the day.
+            Meet your health goals by tracking your calories, weight, and steps
+            in Caltrack. Get nutritional information from the food Database via
+            "search foods" section. The app allows user to tracks proteins,
+            carbs, fats, sodium, and sugar in the food diary. Log in steps and
+            weight to monitor progess and health goals.
             <br></br>
             <Link to="/macroCalculator">
               <button>
                 Calculate my macros for WeightLoss
-                <FitnessCenterIcon />
-              </button>
-            </Link>
-            <Link to="/macroCalculator">
-              <button>
-                Calculate my macros for Maintence
                 <FitnessCenterIcon />
               </button>
             </Link>
@@ -36,4 +30,4 @@ const Home = () => {
     </div>
   )
 }
-export default Home
+export default About

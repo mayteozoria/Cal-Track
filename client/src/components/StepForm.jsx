@@ -63,14 +63,6 @@ const StepForm = () => {
                 <td className="steps">{steps.description}</td>
                 <td>
                   <input
-                    className="edit-button"
-                    type="button"
-                    value="edit"
-                    onClick={(e) => handleEditClick(steps._id)}
-                  />
-                </td>
-                <td>
-                  <input
                     className="delete-button"
                     type="button"
                     value="delete"

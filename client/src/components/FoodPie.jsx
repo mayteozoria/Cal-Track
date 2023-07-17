@@ -1,25 +1,31 @@
 import * as React from 'react'
-import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
+import { useState, useEffect } from 'react'
+import { GetFoods } from '../services/FoodServices'
+import { PieChart } from '@mui/x-charts/PieChart'
 
-const FoodPie = (props) => {
-  return (
-    <PieChart
-      series={[
-        {
-          arcLabel: (item) => `${item.label} (${item.value})`,
-          arcLabelMinAngle: 45,
-          data
-        }
-      ]}
-      sx={{
-        [`& .${pieArcLabelClasses.root}`]: {
-          fill: 'white',
-          fontWeight: 'bold'
-        }
-      }}
-      {...size}
-    />
-  )
+const FoodPie = () => {
+  const [foods, setFoods] = useState([])
+
+  useEffect(() => {
+    const handleFood = async () => {
+      const food = await GetFoods()
+      setFoods(foods)
+      console.log(foods)
+    }
+
+    handleFood()
+  }, [])
+
+  const chartData = {
+    labels: foods.map((food) => item.name),
+    datasets: [
+      {
+        data: foods.map((food) => item.calories),
+        backgroundColor: ['blue']
+      }
+    ]
+  }
+  return <PieChart data={chartData} />
 }
 
 export default FoodPie

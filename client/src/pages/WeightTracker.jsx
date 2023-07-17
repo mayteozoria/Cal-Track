@@ -63,10 +63,8 @@ const WeightTracker = () => {
   const handleInputChange = (e) => {
     e.preventDefault()
     setNewWeight({ ...newWeight, [e.target.name]: e.target.value })
-    // console.log(newWeight)
   }
 
-  // The save is the issue when changed map error goes away
   const handleSave = async (id, idx) => {
     const saveWeight = await UpdateWeight(id, newWeight)
     let weightArr = [...weight]
@@ -120,25 +118,7 @@ const WeightTracker = () => {
         <TableBody>
           {weight.map((item, idx) => (
             <TableRow key={item._id}>
-              {/* <TableCell>
-                {editWeight === weight._id ? (
-                  <LocalizationProvider dateAdapter={AdapterDayjs}>
-                    <DatePicker
-                      label="Select date"
-                      type="date"
-                      name="select date"
-                      placeholder="Date"
-                      variant="outlined"
-                      value={newWeight.date}
-                      onChange={handleDateChange}
-                    />
-                  </LocalizationProvider>
-                ) : (
-                  weight.date
-                )}
-              </TableCell> */}
               <TableCell>{item.date}</TableCell>
-              <TableCell>{item.weight}</TableCell>
               <TableCell>
                 {editWeight === item._id ? (
                   <TextField

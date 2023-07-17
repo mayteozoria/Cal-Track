@@ -36,8 +36,6 @@ const Copyright = (props) => {
   )
 }
 
-// TODO remove, this demo shouldn't need to reset the theme.
-
 const defaultTheme = createTheme()
 
 const NewLogIn = ({ setUser }) => {
@@ -53,18 +51,10 @@ const NewLogIn = ({ setUser }) => {
     e.preventDefault()
     const payload = await LogInUser(formValues)
     setFormValues({ email: '', password: '' })
+    console.log(payload)
     setUser(payload)
     navigate('/home')
   }
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault()
-  //   const data = new FormData(event.currentTarget)
-  //   console.log({
-  //     email: data.get('email'),
-  //     password: data.get('password')
-  //   })
-  // }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -147,13 +137,9 @@ const NewLogIn = ({ setUser }) => {
                 Sign In
               </Button>
               <Grid container>
-                <Grid item xs>
-                  <Link href="#" variant="body2">
-                    Forgot password?
-                  </Link>
-                </Grid>
+                <Grid item xs></Grid>
                 <Grid item>
-                  <Link to="/newsignup" href="#" variant="body2">
+                  <Link to="/newsignup" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>

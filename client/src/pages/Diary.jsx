@@ -107,7 +107,6 @@ const Diary = (props) => {
           </table>
         </div>
       </div>
-      {/* <FoodPie /> */}
     </div>
   )
 }

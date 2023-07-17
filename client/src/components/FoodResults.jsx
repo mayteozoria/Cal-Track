@@ -26,12 +26,22 @@ const FoodResults = (props) => {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {/* <TableCell>Dessert (100g serving)</TableCell> */}
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Serving Size</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+            <TableCell style={{ color: 'white' }}>Name</TableCell>
+            <TableCell style={{ color: 'white' }} align="right">
+              Calories
+            </TableCell>
+            <TableCell style={{ color: 'white' }} align="right">
+              Serving Size&nbsp;(g)
+            </TableCell>
+            <TableCell style={{ color: 'white' }} align="right">
+              Protein&nbsp;(g)
+            </TableCell>
+            <TableCell style={{ color: 'white' }} align="right">
+              Fat&nbsp;(g)
+            </TableCell>
+            <TableCell style={{ color: 'white' }} align="right">
+              Carbs&nbsp;(g)
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -40,21 +50,19 @@ const FoodResults = (props) => {
               key={item.id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row">
-                {item.name}
-              </TableCell>
+              <TableCell>{item.name}</TableCell>
               <TableCell align="right">{item.calories}</TableCell>
-              <TableCell align="right">{item.serving_size_g}</TableCell>
-              <TableCell align="right">{item.protein_g}</TableCell>
-              <TableCell align="right">{item.fat_total_g}</TableCell>
-              <TableCell align="right">{item.carbohydrates_total_g}</TableCell>
+              <TableCell align="right">{item.serving_size_g}g</TableCell>
+              <TableCell align="right">{item.protein_g}g</TableCell>
+              <TableCell align="right">{item.fat_total_g}g</TableCell>
+              <TableCell align="right">{item.carbohydrates_total_g}g</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
 
       <Button type="button" onClick={handleAddClick}>
-        Add Food to Diary
+        Add to Food Diary
       </Button>
     </TableContainer>
   )

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import {
-  Grid,
   Button,
   TextField,
   Select,
   MenuItem,
   FormControl,
-  InputLabel
+  InputLabel,
+  Divider,
+  Box,
+  Typography
 } from '@mui/material'
 // import { GetWeight } from './services/WeightServices'
 
@@ -18,8 +20,6 @@ const MacroCalculator = () => {
   const [gender, setGender] = useState('')
   const [activityLevel, setActivityLevel] = useState('')
   const [calories, setCalories] = useState('')
-  const [goal, setGoal] = useState('')
-  const [goalLevel, setGoalLevel] = useState('')
 
   const calculateCalories = () => {
     const totalHeightInches =
@@ -56,8 +56,8 @@ const MacroCalculator = () => {
     }
 
     const weightLossCalories = tdee - 500
-
-    setCalories(weightLossCalories)
+    let newMacro = Math.trunc(weightLossCalories)
+    setCalories(newMacro)
   }
 
   const handleGenderChange = (e) => {
@@ -70,7 +70,9 @@ const MacroCalculator = () => {
 
   return (
     <div>
-      <h1> Weight Loss Calories</h1>
+      <Divider sx={{ my: 8 }} />
+      <Typography variant="h3">Weight Loss Calories</Typography>
+      <Divider sx={{ my: 4 }} />
       <FormControl>
         <TextField
           label="Height (feet)"
@@ -99,39 +101,48 @@ const MacroCalculator = () => {
           onChange={(e) => setAge(e.target.value)}
         />
       </FormControl>
-      <FormControl>
-        <InputLabel>Gender</InputLabel>
-        <Select value={gender} onChange={handleGenderChange}>
-          <MenuItem value="male">Male</MenuItem>
-          <MenuItem value="female">Female</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl>
-        <InputLabel>Activity Level</InputLabel>
-        <Select value={activityLevel} onChange={handleActivityLevelChange}>
-          <MenuItem value="sedentary">
-            Sedentary (little to no exercise)
-          </MenuItem>
-          <MenuItem value="lightlyActive">
-            Lightly Active (light exercise/sports 1-3 days/week)
-          </MenuItem>
-          <MenuItem value="moderatelyActive">
-            Moderately Active (moderate exercise/sports 3-5 days/week)
-          </MenuItem>
-          <MenuItem value="veryActive">
-            Very Active (hard exercise/sports 6-7 days/week)
-          </MenuItem>
-          <MenuItem value="extraActive">
-            Extra Active (very hard exercise/sports & physical job or 2x
-            training)
-          </MenuItem>
-        </Select>
-      </FormControl>
 
-      <Button variant="contained" color="primary" onClick={calculateCalories}>
-        Calculate
-      </Button>
-      {calories && <p>Calories for weight loss: {calories} calories per day</p>}
+      <Divider sx={{ my: 2 }} />
+      <Box sx={{ minWidth: 100 }}>
+        <FormControl fullWidth>
+          <InputLabel>Gender</InputLabel>
+          <Select value={gender} onChange={handleGenderChange}>
+            <MenuItem value="male">Male</MenuItem>
+            <MenuItem value="female">Female</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Divider sx={{ my: 2 }} />
+      <Box sx={{ minWidth: 200 }}>
+        <FormControl fullWidth>
+          <InputLabel>Activity Level</InputLabel>
+          <Select value={activityLevel} onChange={handleActivityLevelChange}>
+            <MenuItem value="sedentary">
+              Sedentary (less than 5000 steps per day)
+            </MenuItem>
+            <MenuItem value="lightlyActive">
+              Lightly Active (5,000 to 7,4999 per day)
+            </MenuItem>
+            <MenuItem value="moderatelyActive">
+              Moderately Active (7,500 to 9,999 per day)
+            </MenuItem>
+            <MenuItem value="veryActive">
+              Very Active (10,000 steps a day)
+            </MenuItem>
+            <MenuItem value="extraActive">
+              Extra Active (more than 12,500 steps a day)
+            </MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+      <Typography variant="h3">
+        <Button variant="contained" color="primary" onClick={calculateCalories}>
+          Calculate
+        </Button>
+        {calories && (
+          <p>Calories for weight loss: {calories} calories per day</p>
+        )}
+      </Typography>
     </div>
   )
 }
