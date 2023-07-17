@@ -17,9 +17,9 @@ export const PostWeight = async (data) => {
     throw error
   }
 }
-export const UpdateWeight = async (id) => {
+export const UpdateWeight = async (id, data) => {
   try {
-    const res = await Client.put(`/weight/${id}`)
+    const res = await Client.put(`/weight/${id}`, data)
     return res.data
   } catch (error) {
     throw error

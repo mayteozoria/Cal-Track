@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
@@ -14,8 +13,8 @@ import {
   TableCell,
   IconButton
 } from '@mui/material'
-
-import { Icon } from '@mui/material'
+import EditIcon from '@mui/icons-material/Edit'
+import DeleteIcon from '@mui/icons-material/Delete'
 
 import {
   GetWeight,
@@ -29,7 +28,6 @@ const WeightTracker = () => {
   const [newWeight, setNewWeight] = useState({ weight: '', date: '' })
   const [deleteWeight, setDeleteWeight] = useState(false)
   const [editWeight, setEditWeight] = useState(null)
-  // const [editIndex, setEditIndex] = useState(-1)
 
   useEffect(() => {
     handleWeight()
@@ -53,33 +51,32 @@ const WeightTracker = () => {
     setNewWeight({ ...newWeight, [e.target.name]: e.target.value })
   }
 
-  const handleUpdate = async (weight_id) => {
+  const handleEdit = async (weight_id) => {
     const editWeight = await UpdateWeight(weight_id)
-    setWeight(weight)
-    // setEditWeight([...weight, editWeight])
-    // setNewWeight({ weight: '', date: '' })
-    console.log(weight_id)
-  }
-
-  const handleEdit = (weight_id) => {
     setEditWeight(weight_id)
+    console.log(weight_id)
   }
 
   const handleDateChange = (date) => {
     setSelectedDate(date)
   }
   const handleInputChange = (e) => {
-    setNewWeight(e.target.value)
+    e.preventDefault()
+    setNewWeight({ ...newWeight, [e.target.name]: e.target.value })
+    // console.log(newWeight)
   }
 
-  const handleSave = async (weight_id) => {
-    const saveWeight = await UpdateWeight(weight_id)
-    setWeight(saveWeight)
+  // The save is the issue when changed map error goes away
+  const handleSave = async (id, idx) => {
+    const saveWeight = await UpdateWeight(id, newWeight)
+    let weightArr = [...weight]
+    weightArr.splice(idx, 1, saveWeight)
+    setWeight(weightArr)
     setEditWeight(null)
-    setNewWeight('')
+    setNewWeight({ weight: '', date: '' })
   }
 
-  const handleDeleteWeight = async (weight_id) => {
+  const handleDelete = async (weight_id) => {
     const deleteWeight = await DeleteWeight(weight_id)
     setDeleteWeight((prevState) => (prevState = !prevState))
   }
@@ -121,9 +118,9 @@ const WeightTracker = () => {
         </TableHead>
         {/* </Table> */}
         <TableBody>
-          {weight.map((weight) => (
-            <TableRow key={weight._id}>
-              <TableCell>
+          {weight.map((item, idx) => (
+            <TableRow key={item._id}>
+              {/* <TableCell>
                 {editWeight === weight._id ? (
                   <LocalizationProvider dateAdapter={AdapterDayjs}>
                     <DatePicker
@@ -139,28 +136,41 @@ const WeightTracker = () => {
                 ) : (
                   weight.date
                 )}
-              </TableCell>
-              <TableCell>{weight.weight}</TableCell>
-              <TableCell>{weight.date}</TableCell>
+              </TableCell> */}
+              <TableCell>{item.date}</TableCell>
+              <TableCell>{item.weight}</TableCell>
               <TableCell>
-                {editWeight === weight._id ? (
-                  <TextField value={newWeight} onChange={handleInputChange} />
+                {editWeight === item._id ? (
+                  <TextField
+                    label="Update weight"
+                    type="number"
+                    name="weight"
+                    placeholder="Enter lbs"
+                    variant="outlined"
+                    value={newWeight.weight}
+                    onChange={handleInputChange}
+                  />
                 ) : (
-                  weight.weight
+                  item.weight
                 )}
               </TableCell>
               <TableCell>
-                {editWeight === weight._id ? (
-                  <IconButton onClick={() => handleSave(weight._id)}>
+                {editWeight === item._id ? (
+                  <IconButton onClick={() => handleSave(item._id, idx)}>
                     Save
                   </IconButton>
                 ) : (
-                  <IconButton onClick={() => handleEdit(weight._id)}>
-                    Edit
+                  <IconButton onClick={() => handleEdit(item._id)}>
+                    <EditIcon />
                   </IconButton>
                 )}
-                <IconButton onClick={() => handleDelete(weight._id)}>
-                  Delete
+                <IconButton
+                  className="delete-button"
+                  type="button"
+                  value="delete"
+                  onClick={() => handleDelete(item._id)}
+                >
+                  <DeleteIcon />
                 </IconButton>
               </TableCell>
             </TableRow>

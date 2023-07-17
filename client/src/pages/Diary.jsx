@@ -1,5 +1,6 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
+// import FoodPie from '../components/FoodPie'
 
 const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
@@ -106,6 +107,7 @@ const Diary = (props) => {
           </table>
         </div>
       </div>
+      {/* <FoodPie /> */}
     </div>
   )
 }

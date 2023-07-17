@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import dbblue from '/dbblue.png'
+import FitnessCenterIcon from '@mui/icons-material/FitnessCenter'
 
 const Home = () => {
   // const navigate = useNavigate()
@@ -15,7 +16,16 @@ const Home = () => {
             calories and returns the remaining calories left for the day.
             <br></br>
             <Link to="/macroCalculator">
-              <button>Calculate my macros</button>
+              <button>
+                Calculate my macros for WeightLoss
+                <FitnessCenterIcon />
+              </button>
+            </Link>
+            <Link to="/macroCalculator">
+              <button>
+                Calculate my macros for Maintence
+                <FitnessCenterIcon />
+              </button>
             </Link>
           </p>
         </div>
