@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { LogInUser } from '../services/Auth'
+import { Link } from 'react-router-dom'
 
 import * as React from 'react'
 import Avatar from '@mui/material/Avatar'
@@ -9,7 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import TextField from '@mui/material/TextField'
 import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
-import Link from '@mui/material/Link'
+// import Link from '@mui/material/Link'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Grid from '@mui/material/Grid'
@@ -152,8 +153,8 @@ const NewLogIn = ({ setUser }) => {
                   </Link>
                 </Grid>
                 <Grid item>
-                  <Link to="/newsignup#" href="#" variant="body2">
-                    {"Don't have an account? Sign Up"}{' '}
+                  <Link to="/newsignup" href="#" variant="body2">
+                    {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>

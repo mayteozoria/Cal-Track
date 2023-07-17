@@ -7,30 +7,29 @@ import Home from './components/Home'
 import NewLogIn from './pages/NewLogIn'
 import Food from './pages/Food'
 import Step from './pages/Step'
-import Weight from './pages/Weight'
+import MacroCalculator from './components/MacroCalculator'
+import WeightTracker from './pages/WeightTracker'
 import Diary from './pages/Diary'
 import NewSignUp from './pages/NewSignUp'
+// import NewWeight from './components/NewWeight'
 
 import './App.css'
-import MacroCalculator from './components/MacroCalculator'
 
 const App = () => {
   const [user, setUser] = useState(null)
 
   const handleLogOut = () => {
-    //Reset all auth related state and clear localStorage
     setUser(null)
     localStorage.clear()
   }
 
   const checkToken = async () => {
-    //If a token exists, sends token to localStorage to persist logged in user
     const user = await CheckSession()
     setUser(user)
   }
   useEffect(() => {
     const token = localStorage.getItem('token')
-    // Check if token exists before requesting to validate the token
+
     if (token) {
       checkToken()
     }
@@ -43,12 +42,11 @@ const App = () => {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} />
-          {/* <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} /> */}
-
           <Route path="/food" element={<Food />} />
           <Route path="/step" element={<Step />} />
           <Route path="/diary" element={<Diary />} />
-          <Route path="/weight" element={<Weight />} />
+          {/* <Route path="/new" element={<NewWeight />} /> */}
+          <Route path="/weight" element={<WeightTracker />} />
           <Route path="/macrocalculator" element={<MacroCalculator />} />
           <Route path="/login" element={<NewLogIn />} />
           <Route path="/newsignup" element={<NewSignUp />} />

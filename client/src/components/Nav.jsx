@@ -7,6 +7,7 @@ const Nav = ({ user, handleLogOut }) => {
       <nav className="navbar">
         <h3>Welcome {user.email}</h3>
         <Link to="/diary">Food Diary</Link>
+        <Link to="/weight">Weight Tracker</Link>
         <Link to="/food">Add Foods</Link>
         <Link to="/step">Steps</Link>
         <Link onClick={handleLogOut} to="/">
@@ -30,7 +31,7 @@ const Nav = ({ user, handleLogOut }) => {
   return (
     <div className="navbar">
       <header>
-        <Link to="/">
+        <Link to="/home">
           <div className="welcome-bar" alt="home"></div>
         </Link>
 

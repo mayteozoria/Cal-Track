@@ -5,10 +5,11 @@
 
 
 
+
 :root {
   --primary-bg: hsl(223, 18%, 92%);
-  --link-color-primary: #1222d7;
-  --secondary-bg: #081b7a;
+  --link-color-primary: wj#1222d7;
+  --secondary-bg: #9da3c2;
   --link-color-secondary: #1c138d;
   --primary-button-hover: #140d9e;
 }
@@ -47,10 +48,6 @@ header {
   height: 3.5em;
 }
 
-/* nav {
-  margin-right: 1em;
-  display: flex;
-} */
 
 nav a,
 nav h3 {
@@ -196,6 +193,7 @@ table {
   width: 600px;
   height: 50px;
 
+
 }
 
 th {
@@ -258,3 +256,11 @@ img {
   width: 33.33333%;
   padding: 20px;
 }
+.css-rqglhn-MuiTable-root table{
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+color: lightblue;
+}
+
