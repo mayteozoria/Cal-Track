@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import dayjs from 'dayjs'
 import {
   Typography,
   TextField,
@@ -28,6 +29,7 @@ const WeightTracker = () => {
   const [newWeight, setNewWeight] = useState({ weight: '', date: '' })
   const [deleteWeight, setDeleteWeight] = useState(false)
   const [editWeight, setEditWeight] = useState(null)
+  // const [selectedDate, setSelectedDate] = useState(null)
 
   useEffect(() => {
     handleWeight()
@@ -61,7 +63,7 @@ const WeightTracker = () => {
     setSelectedDate(date)
   }
   const handleInputChange = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     setNewWeight({ ...newWeight, [e.target.name]: e.target.value })
   }
 
@@ -72,6 +74,7 @@ const WeightTracker = () => {
     setWeight(weightArr)
     setEditWeight(null)
     setNewWeight({ weight: '', date: '' })
+    console.log(saveWeight)
   }
 
   const handleDelete = async (weight_id) => {
@@ -106,37 +109,41 @@ const WeightTracker = () => {
         value={newWeight.weight}
         onChange={handleChange}
       />
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           label="Select date"
-          type="date"
-          name="select date"
+          name="date"
           placeholder="Date"
+          format="MM - DD - YYYY"
+          defaultValue={dayjs('07-1-2022')}
           variant="outlined"
           value={newWeight.date}
           onChange={handleDateChange}
         />
-      </LocalizationProvider>
+      </LocalizationProvider> */}
       <Button variant="contained" onClick={handleAddWeight}>
         Add
       </Button>
-      <Table sx={{ width: 700 }} aria-label="a dense table">
+      <Table sx={{ width: 300 }} aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell
+            {/* <TableCell
+              align="right"
               sx={{ width: 100 }}
               style={{ backgroundColor: 'white', color: 'blue' }}
             >
               Date
-            </TableCell>
+            </TableCell> */}
             <TableCell
-              sx={{ width: 100 }}
+              align="right"
+              // sx={{ width: 200 }}
               style={{ backgroundColor: 'white', color: 'blue' }}
             >
               Weight
             </TableCell>
             <TableCell
-              sx={{ width: 100 }}
+              align="right"
+              // sx={{ width: 200 }}
               style={{ backgroundColor: 'white', color: 'blue' }}
             >
               Actions
@@ -146,9 +153,10 @@ const WeightTracker = () => {
         {/* </Table> */}
         <TableBody>
           {weight.map((item, idx) => (
-            <TableRow key={item._id}>
-              <TableCell>{item.date}</TableCell>
-              <TableCell>
+            <TableRow align="right" key={item._id}>
+              {/* <TableCell>{item.weight}</TableCell> */}
+
+              <TableCell align="right">
                 {editWeight === item._id ? (
                   <TextField
                     label="Update weight"
@@ -156,14 +164,14 @@ const WeightTracker = () => {
                     name="weight"
                     placeholder="Enter lbs"
                     variant="outlined"
-                    value={newWeight.weight}
+                    value={item.newWeight}
                     onChange={handleInputChange}
                   />
                 ) : (
                   item.weight
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell align="right">
                 {editWeight === item._id ? (
                   <IconButton onClick={() => handleSave(item._id, idx)}>
                     Save
