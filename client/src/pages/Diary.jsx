@@ -1,6 +1,17 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
 // import FoodPie from '../components/FoodPie'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
+
+import DeleteIcon from '@mui/icons-material/Delete'
+import Grid from '@mui/material/Grid'
+import { Typography } from '@mui/material'
 
 const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
@@ -53,61 +64,120 @@ const Diary = (props) => {
     setTotalFats(newFats)
   }
   return (
-    <div className="diary">
-      <h3>Your Food Diary:</h3>
-      <div className="date">Date</div>
-      <div className="dairy-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Food</th>
-              <th>Calories</th>
-              <th>Serving Size</th>
-              <th>Protein</th>
-              <th>Carbohydrates</th>
-              <th>Fiber</th>
-              <th>Fat</th>
-              <th>Sugar</th>
-              <th>Sodium</th>
-            </tr>
-          </thead>
-          <tbody>
-            {allFoods.map((item) => (
-              <tr key={item._id}>
-                <td>{item.name}</td>
-                <td>{item.calories}</td>
-                <td>{item.serving_size_g}g</td>
-                <td>{item.protein_g}g</td>
-                <td>{item.carbohydrates_total_g}g</td>
-                <td>{item.fiber_g}g</td>
-                <td>{item.fat_total_g}g</td>
-                <td>{item.sugar_g}g</td>
-                <td>{item.sodium_mg}mg</td>
-                <td>
-                  <input
-                    type="button"
-                    value="delete"
-                    onClick={() => handleDeleteClick(item._id)}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div>
-          <table>
-            <tbody>
-              <tr>
-                <td>Total Calories:{totalCalories}</td>
-                <td>Carbs:{totalCarbs}</td>
-                <td>Fats:{totalFats}</td>
-                <td>Protein:{totalProtein}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+    <Grid container direction="column" style={{ minHeight: '55vh' }}>
+      <Grid item style={{ flexGrow: 1 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            mr: 2,
+            display: { xs: 'none', md: 'flex' },
+            fontFamily: 'monospace',
+            fontWeight: 200,
+            letterSpacing: '.1rem',
+            // minHeight: '5vh',
+            color: 'inherit',
+            textDecoration: 'none'
+          }}
+        >
+          Food Diary
+        </Typography>
+
+        {/* <Grid> */}
+        <TableContainer sx={{ marginBottom: 5 }} component={Paper}>
+          <Table sx={{ width: 100 }} aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  sx={{ width: 100 }}
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                >
+                  Name
+                </TableCell>
+                <TableCell
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                  align="right"
+                >
+                  Calories
+                </TableCell>
+                <TableCell
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                  align="right"
+                >
+                  Serving Size&nbsp;(g)
+                </TableCell>
+                <TableCell
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                  align="right"
+                >
+                  Protein&nbsp;(g)
+                </TableCell>
+                <TableCell
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                  align="right"
+                >
+                  Fat&nbsp;(g)
+                </TableCell>
+                <TableCell
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                  align="right"
+                >
+                  Carbs&nbsp;(g)
+                </TableCell>
+                <TableCell
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                  align="right"
+                >
+                  Action
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {allFoods.map((item) => (
+                <TableRow
+                  key={item._id}
+                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                >
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell align="center">{item.calories}</TableCell>
+                  <TableCell align="center">{item.serving_size_g}g</TableCell>
+                  <TableCell align="center">{item.protein_g}g</TableCell>
+                  <TableCell align="center">{item.fat_total_g}g</TableCell>
+                  <TableCell align="center">
+                    {item.carbohydrates_total_g}g
+                  </TableCell>
+                  <TableCell align="center">
+                    <DeleteIcon onClick={() => handleDeleteClick(item._id)} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Grid>
+      <TableContainer component={Paper}>
+        <Table sx={{ width: 660 }}>
+          <TableHead>
+            <TableRow>
+              <TableCell style={{ backgroundColor: 'white' }}>
+                Total Calories:{totalCalories}
+              </TableCell>
+              <TableCell style={{ backgroundColor: 'white' }}>
+                Carbs:{totalCarbs}
+              </TableCell>
+              <TableCell style={{ backgroundColor: 'white' }}>
+                Fats:{totalFats}
+              </TableCell>
+              <TableCell style={{ backgroundColor: 'white' }}>
+                Protein:{totalProtein}
+              </TableCell>
+            </TableRow>
+          </TableHead>
+        </Table>
+      </TableContainer>
+      {/* </Table> */}
+      {/* </TableContainer> */}
+    </Grid>
+    // </Grid>
   )
 }
 export default Diary

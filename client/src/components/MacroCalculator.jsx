@@ -10,6 +10,7 @@ import {
   Box,
   Typography
 } from '@mui/material'
+
 // import { GetWeight } from './services/WeightServices'
 
 const MacroCalculator = () => {
@@ -103,15 +104,15 @@ const MacroCalculator = () => {
       </FormControl>
 
       <Divider sx={{ my: 2 }} />
-      <Box sx={{ minWidth: 100 }}>
-        <FormControl fullWidth>
-          <InputLabel>Gender</InputLabel>
-          <Select value={gender} onChange={handleGenderChange}>
-            <MenuItem value="male">Male</MenuItem>
-            <MenuItem value="female">Female</MenuItem>
-          </Select>
-        </FormControl>
-      </Box>
+      {/* <Box sx={{ minWidth: 100 }}> */}
+      <FormControl fullWidth>
+        <InputLabel>Gender</InputLabel>
+        <Select value={gender} onChange={handleGenderChange}>
+          <MenuItem value="male">Male</MenuItem>
+          <MenuItem value="female">Female</MenuItem>
+        </Select>
+      </FormControl>
+      {/* </Box> */}
       <Divider sx={{ my: 2 }} />
       <Box sx={{ minWidth: 200 }}>
         <FormControl fullWidth>

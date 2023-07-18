@@ -5,7 +5,16 @@ import {
   DeleteSteps,
   UpdateSteps
 } from '../services/StepServices'
-
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import AddBoxIcon from '@mui/icons-material/Addbox'
 import AddStep from './AddStep'
 
 const StepForm = () => {
@@ -45,11 +54,24 @@ const StepForm = () => {
   }
   return (
     <div>
-      <AddStep
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        newStep={newStep}
-      />
+      <Typography
+        variant="h6"
+        sx={{
+          mr: 2,
+          display: { xs: 'none', md: 'flex' },
+          fontFamily: 'monospace',
+          fontWeight: 200,
+          letterSpacing: '.1rem',
+          color: 'inherit',
+          textDecoration: 'none'
+        }}
+      >
+        <AddStep
+          handleSubmit={handleSubmit}
+          handleChange={handleChange}
+          newStep={newStep}
+        />
+      </Typography>
       <div className="step-table">
         <table>
           <tbody>

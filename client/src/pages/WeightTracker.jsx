@@ -81,7 +81,20 @@ const WeightTracker = () => {
 
   return (
     <div>
-      <Typography variant="h4" gutterBottom>
+      <Typography
+        variant="h6"
+        gutterBottom
+        sx={{
+          mr: 2,
+          display: { xs: 'none', md: 'flex' },
+          fontFamily: 'monospace',
+          fontWeight: 200,
+          letterSpacing: '.1rem',
+          minHeight: '8vh',
+          color: 'inherit',
+          textDecoration: 'none'
+        }}
+      >
         Weight Tracker
       </Typography>
       <TextField
@@ -107,11 +120,27 @@ const WeightTracker = () => {
       <Button variant="contained" onClick={handleAddWeight}>
         Add
       </Button>
-      <Table>
+      <Table sx={{ width: 700 }} aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Weight</TableCell>
+            <TableCell
+              sx={{ width: 100 }}
+              style={{ backgroundColor: 'white', color: 'blue' }}
+            >
+              Date
+            </TableCell>
+            <TableCell
+              sx={{ width: 100 }}
+              style={{ backgroundColor: 'white', color: 'blue' }}
+            >
+              Weight
+            </TableCell>
+            <TableCell
+              sx={{ width: 100 }}
+              style={{ backgroundColor: 'white', color: 'blue' }}
+            >
+              Actions
+            </TableCell>
           </TableRow>
         </TableHead>
         {/* </Table> */}
