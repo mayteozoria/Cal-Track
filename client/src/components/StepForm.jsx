@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { GetSteps, PostSteps, DeleteSteps } from '../services/StepServices'
 
-import { Button, Typography, Divider } from '@mui/material'
+import { Typography, Divider } from '@mui/material'
 import AddStep from './AddStep'
 
 const StepForm = () => {
@@ -20,10 +20,10 @@ const StepForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log('please works')
     const newSteps = await PostSteps(newStep)
     setSteps([...steps, newSteps])
     setNewStep({ description: '', steps: '' })
-    console.log(steps)
   }
   const handleChange = (e) => {
     setNewStep({ ...newStep, [e.target.name]: e.target.value })
@@ -34,15 +34,9 @@ const StepForm = () => {
     setDeleteStep((prevState) => (prevState = !prevState))
   }
 
-  // const handleEditClick = async (step_id) => {
-  //   const editSteps = await UpdateSteps(step_id)
-  //   setEditStep([...steps, editStep])
-  //   setNewStep({ description: '', steps: '' })
-  //   console.log(step_id)
-
   return (
     <div>
-      <Divider sx={{ my: 10 }} />
+      <Divider sx={{ my: 4 }} />
       <Typography
         variant="h6"
         sx={{
@@ -66,7 +60,8 @@ const StepForm = () => {
             <tbody>
               <tr>
                 <th>Steps</th>
-                <th>Date</th>
+                <th>Description</th>
+                <th>Action</th>
               </tr>
               {steps.map((steps) => (
                 <tr key={steps._id}>

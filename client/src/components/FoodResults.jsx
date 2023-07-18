@@ -7,7 +7,7 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
+
 import Typography from '@mui/material/Typography'
 import IconButton from '@mui/material/IconButton'
 import AddBoxIcon from '@mui/icons-material/Addbox'
@@ -35,7 +35,7 @@ const FoodResults = (props) => {
         textDecoration: 'none'
       }}
     >
-      <TableContainer component={Paper}>
+      <TableContainer>
         <Table sx={{ width: 300 }} aria-label="simple table">
           <TableHead>
             <TableRow>

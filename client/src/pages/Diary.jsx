@@ -1,6 +1,6 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
-// import FoodPie from '../components/FoodPie'
+
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -13,7 +13,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
 
-const Diary = (props) => {
+const Diary = () => {
   const [allFoods, setAllFoods] = useState([])
   const [deleteFood, setDeleteFood] = useState(false)
   const [totalCalories, setTotalCalories] = useState(0)
@@ -162,22 +162,19 @@ const Diary = (props) => {
                 Total Calories:{totalCalories}
               </TableCell>
               <TableCell style={{ backgroundColor: 'white' }}>
-                Carbs:{totalCarbs}
+                Carbs:{totalCarbs}g
               </TableCell>
               <TableCell style={{ backgroundColor: 'white' }}>
-                Fats:{totalFats}
+                Fats:{totalFats}g
               </TableCell>
               <TableCell style={{ backgroundColor: 'white' }}>
-                Protein:{totalProtein}
+                Protein:{totalProtein}g
               </TableCell>
             </TableRow>
           </TableHead>
         </Table>
       </TableContainer>
-      {/* </Table> */}
-      {/* </TableContainer> */}
     </Grid>
-    // </Grid>
   )
 }
 export default Diary

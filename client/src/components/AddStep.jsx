@@ -1,10 +1,10 @@
 import { Typography, Divider, Button } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
+// import AddIcon from '@mui/icons-material/Add'
 
 const AddStep = (props) => {
   return (
     <div className="step-form">
-      <Divider sx={{ my: 4 }} />
+      <Divider sx={{ my: 10 }} />
       <Typography
         variant="h6"
         sx={{
@@ -34,10 +34,7 @@ const AddStep = (props) => {
             value={props.newStep.description}
             onChange={props.handleChange}
           />
-          <Button>
-            Add
-            {/* <AddIcon /> */}
-          </Button>
+          <button>Add</button>
         </form>
       </Typography>
     </div>

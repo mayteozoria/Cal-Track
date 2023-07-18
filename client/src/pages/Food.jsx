@@ -4,7 +4,7 @@ import { API_KEY } from '../globals'
 import Search from '../components/Search'
 import FoodResults from '../components/FoodResults'
 
-const Food = () => {
+const Food = (props) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState([])
 

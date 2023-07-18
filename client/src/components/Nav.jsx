@@ -1,15 +1,13 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
+import { AppBar, Toolbar, Typography } from '@mui/material'
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
   if (user) {
     userOptions = (
       <nav className="navbar">
-        <AppBar position="static">
+        <AppBar position="static" sx={{ color: 'white' }}>
           <Toolbar>
             <Typography
               variant="h6"
@@ -19,7 +17,7 @@ const Nav = ({ user, handleLogOut }) => {
                 fontFamily: 'monospace',
                 fontWeight: 200,
                 letterSpacing: '.1rem',
-                color: 'inherit',
+                color: 'white',
                 textDecoration: 'none'
               }}
             >
@@ -34,20 +32,19 @@ const Nav = ({ user, handleLogOut }) => {
                 fontFamily: 'monospace',
                 fontWeight: 200,
                 letterSpacing: '.1rem',
-                color: 'inherit',
+                color: 'white',
                 textDecoration: 'none'
               }}
             >
-              {/* <Link to="/home">Home</Link> */}
-              <Link to="/home">Home</Link>
-              <Link to="/diary">Food Diary</Link>
+              <Link underline="none" to="/diary">
+                Food Diary
+              </Link>
               <Link to="/weight">Weight Tracker</Link>
               <Link to="/food">Add Foods</Link>
               <Link to="/step">Steps</Link>
-              <Link onClick={handleLogOut} to="/newlogin">
+              <Link onClick={handleLogOut} to="/">
                 Log Out
               </Link>
-              {/* </Box> */}
             </Typography>
           </Toolbar>
         </AppBar>
@@ -57,22 +54,34 @@ const Nav = ({ user, handleLogOut }) => {
 
   const publicOptions = (
     <nav className="navbar">
-      <AppBar position="static">
+      <AppBar position="relative" sx={{ backgroundColor: 'white' }}>
         <Toolbar>
           <Typography
-            variant="h6"
+            variant="h5"
+            // gutterBottom
+            // marked="center"
+            align="center"
+            underline="none"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 200,
+              fontFamily: '"Helvetica Neue"',
+              fontWeight: 50,
               letterSpacing: '.1rem',
-              color: 'inherit',
+              color: 'black',
+              backgroundColor: 'white',
               textDecoration: 'none'
             }}
           >
-            <Link to="/newsignup">Sign Up</Link>
-            <Link to="/newlogin">Log In</Link>
+            <Link underline="none" to="/"></Link>
+            <Link
+              underline="none"
+              sx={{ backgroundColor: 'white' }}
+              to="/newsignup"
+            >
+              Sign Up
+            </Link>
+            <Link to="/newlogin">Sign In</Link>
           </Typography>
         </Toolbar>
       </AppBar>

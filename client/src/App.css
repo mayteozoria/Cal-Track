@@ -8,10 +8,10 @@
 
 :root {
   --primary-bg: hsl(223, 18%, 92%);
-  --link-color-primary: wj#1222d7;
-  --secondary-bg: #9da3c2;
-  --link-color-secondary: #1c138d;
-  --primary-button-hover: #140d9e;
+  /* --link-color-primary: #1222d7; */
+  /* --secondary-bg: #9da3c2; */
+  /* --link-color-secondary: ; */
+  /* --primary-button-hover: #140d9e; */
 }
 
 body {
@@ -40,7 +40,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--primary-bg);
+  /* background-color: var(--primary-bg); */
 }
 
 .logo,
@@ -61,10 +61,10 @@ nav h3 {
 }
 
 nav a:hover {
-  color: var(--link-color-secondary);
+  color: var(--link-color-secondary); 
   text-decoration-color: var(--link-color-primary);
-}
 
+}
 main {
   min-height: calc(100vh - 4em);
 }
@@ -90,16 +90,16 @@ main {
 
 .home-container button {
   padding: 0.8em 1.2em;
-  background-color: var(--primary-bg);
-  color: var(--link-color-secondary);
+  /* background-color: var(--primary-bg); */
+  /* color: var(--link-color-secondary); */
   font-size: 1.1rem;
 }
 
-.home-container button:hover {
+/* .home-container button:hover {
   transform: scale(1.1);
   background-color: var(--primary-button-hover);
   box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
-}
+} */
 
 
 
@@ -256,11 +256,5 @@ img {
   width: 33.33333%;
   padding: 20px;
 }
-.css-rqglhn-MuiTable-root table{
-  display: table;
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-color: lightblue;
-}
+
 
