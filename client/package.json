@@ -6,7 +6,7 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && touch ./dist/track && echo 'enormous-channel.surge.sh/' >> ./dist/track && npx surge --project ./dist --domain 'enormous-channel.surge.sh/'",
+    "build": "vite build && touch ./dist/track && echo 'caltrack.surge.sh/' >> ./dist/track && npx surge --project ./dist --domain 'caltrack.surge.sh'",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },

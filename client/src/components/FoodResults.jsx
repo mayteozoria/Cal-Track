@@ -19,6 +19,9 @@ const FoodResults = (props) => {
   const handleAddClick = async (e) => {
     e.preventDefault()
     let newFood = await PostFoods(props.searchResults[0])
+    let foodArr = [...props.allFoods]
+    foodArr.push(newFood)
+    props.setAllFoods(foodArr)
     setAmount('')
   }
 
@@ -85,7 +88,7 @@ const FoodResults = (props) => {
           <TableBody>
             {props.searchResults.map((item) => (
               <TableRow
-                key={item.id}
+                key={item.name}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell>{item.name}</TableCell>

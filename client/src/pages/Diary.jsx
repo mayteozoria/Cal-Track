@@ -11,20 +11,22 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
+import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
 
 import DeleteIcon from '@mui/icons-material/Delete'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
+import MacroCalculator from '../components/MacroCalculator'
 
-const Diary = () => {
+const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
   const [deleteFood, setDeleteFood] = useState(false)
   const [totalCalories, setTotalCalories] = useState(0)
   const [totalCarbs, setTotalCarbs] = useState(0)
   const [totalFats, setTotalFats] = useState(0)
   const [totalProtein, setTotalProtein] = useState(0)
+  const [goalCalories, setGoalCalories] = useState(0)
 
   useEffect(() => {
     const handleFood = async () => {
@@ -95,7 +97,6 @@ const Diary = () => {
     margin: { right: 5 },
     width: 500,
     height: 500
-    // legend: { hidden: true }
   }
   const data = [
     { label: 'Carbs', value: totalCarbs, color: '#b7deb8' },
@@ -117,11 +118,15 @@ const Diary = () => {
           onChange={onChange}
           searchQuery={searchQuery}
         />
-        <FoodResults searchResults={searchResults} />
+        <FoodResults
+          searchResults={searchResults}
+          setAllFoods={setAllFoods}
+          allFoods={allFoods}
+        />
       </div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={8}>
+          <Grid item xs={4}>
             <Typography
               variant="h6"
               sx={{
@@ -213,11 +218,16 @@ const Diary = () => {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={6}>
-            <TableContainer>
+          <Grid item xs={4}>
+            <TableContainer sx={{ alignContent: 'center', minHeight: '100vh' }}>
               <Table sx={{ width: 660 }}>
                 <TableHead>
                   <TableRow>
+                    {/* <TextField
+                      lable="Macro"
+                      value={goalCalories}
+                      onChange={hand}
+                    /> */}
                     <TableCell style={{ backgroundColor: 'white' }}>
                       Total Calories:{totalCalories}
                     </TableCell>
@@ -235,25 +245,32 @@ const Diary = () => {
               </Table>
             </TableContainer>
           </Grid>
-          <Grid item xs={12}>
-            <PieChart
-              series={[
-                {
-                  outerRadius: 250,
-                  data,
-                  arcLabel: (item) => `${item.label} (${item.value})`,
-                  arcLabelMinAngle: 45
-                }
-              ]}
-              sx={{
-                [`& .${pieArcLabelClasses.root}`]: {
-                  fill: 'black',
-                  fontSize: 30
-                }
-              }}
-              {...sizing}
-            />
-          </Grid>
+
+          <Box flexGrow={1}>
+            <Grid
+              item
+              xs={4}
+              sx={{ alignContent: 'center', minHeight: '100vh' }}
+            >
+              <PieChart
+                series={[
+                  {
+                    outerRadius: 250,
+                    data,
+                    arcLabel: (item) => `${item.label} (${item.value})`,
+                    arcLabelMinAngle: 45
+                  }
+                ]}
+                sx={{
+                  [`& .${pieArcLabelClasses.root}`]: {
+                    fill: 'black',
+                    fontSize: 30
+                  }
+                }}
+                {...sizing}
+              />
+            </Grid>
+          </Box>
         </Grid>
       </Box>
     </div>

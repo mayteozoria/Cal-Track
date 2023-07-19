@@ -13,7 +13,7 @@ import {
 
 // import { GetWeight } from './services/WeightServices'
 
-const MacroCalculator = () => {
+const MacroCalculator = (props) => {
   const [heightFeet, setHeightFeet] = useState('')
   const [heightInches, setHeightInches] = useState('')
   const [weight, setWeight] = useState('')
@@ -150,12 +150,6 @@ const MacroCalculator = () => {
           Information contained is for a school project and is not intended to
           be used as health advice. Please consult a professional health expert.
         </Typography>
-        {/* <Typography
-          variant="subtitle1"
-          align="center"
-          color="text.secondary"
-          component="p"
-        ></Typography> */}
       </Box>
     </div>
   )
