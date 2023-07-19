@@ -14,7 +14,7 @@
 ## **Description**
 
 #### :muscle: 
-_Cal-track is an app that allows users Meet your health goals by tracking your calories, weight, and steps in Caltrack. Get nutritional data for 100,000 + foods and
+_Cal-track is an app that allows users to track their calories, weight, and steps in Caltrack. Get nutritional data for 100,000 + foods and
 beverages via the "search foods" section. The app allows users to track proteins, carbs, fats in the food diary. Log in steps and weight to monitor progess and health goals._
 #### !<img src="cal-track%20.png" width=50% height=50%>
 
