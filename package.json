@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "node --watch server.js",
-    "deploy": "git push heroku main && cd client && npm run build"
+    "deploy": "git push heroku main && cd client && npm run caltrack"
   },
   "keywords": [],
   "author": "Mayte Ozoria",

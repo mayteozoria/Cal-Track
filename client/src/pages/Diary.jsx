@@ -26,7 +26,7 @@ const Diary = (props) => {
   const [totalCarbs, setTotalCarbs] = useState(0)
   const [totalFats, setTotalFats] = useState(0)
   const [totalProtein, setTotalProtein] = useState(0)
-  const [goalCalories, setGoalCalories] = useState(0)
+  // const [goalCalories, setGoalCalories] = useState(0)
 
   useEffect(() => {
     const handleFood = async () => {
