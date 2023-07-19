@@ -53,7 +53,7 @@ const NewLogIn = ({ setUser }) => {
     setFormValues({ email: '', password: '' })
     console.log(payload)
     setUser(payload)
-    navigate('/start')
+    navigate('/diary')
   }
 
   return (

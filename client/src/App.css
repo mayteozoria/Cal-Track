@@ -1,24 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
-@import "react-datepicker/dist/react-datepicker.css";
-/* @import 'react-datepicker/dist/react-datepicker-cssmodules.css' */
+
 
 
 
 
 :root {
-  --primary-bg: hsl(223, 18%, 92%);
-  /* --link-color-primary: #1222d7; */
-  /* --secondary-bg: #9da3c2; */
-  /* --link-color-secondary: ; */
-  /* --primary-button-hover: #140d9e; */
+  --primary-bg: hsl(223, 18%, 92%); 
+  --link-color-primary: #1222d7;
+  --secondary-bg: #9da3c2;
+  --link-color-secondary: white ;
+  --primary-button-hover: #140d9e;
 }
 
 body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
-  /* background-color: white; */
+  background-color: white;
   /* var(--secondary-bg); */
 }
 
@@ -51,13 +50,14 @@ header {
 
 nav a,
 nav h3 {
-  text-decoration-color: var(--primary-bg);
+  /* text-decoration-color: var(--primary-bg); */
   margin: auto 1em;
-  color: var(--link-color-primary);
+  /* color: var(--link-color-primary); */
   padding: 5px 10px;
   border-radius: 6px;
   font-weight: 800;
   transition: all 0.2s ease;
+  /* color:'white' */
 }
 
 nav a:hover {

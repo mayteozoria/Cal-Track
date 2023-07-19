@@ -3,7 +3,7 @@ import dbblue from '/dbblue.png'
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter'
 import AppBar from '@mui/material/AppBar'
 import Button from '@mui/material/Button'
-import CameraIcon from '@mui/icons-material/PhotoCamera'
+
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -86,7 +86,7 @@ const About = () => {
                 <Link
                   component="button"
                   underline="none"
-                  sx={{ color: 'black' }}
+                  sx={{ color: '#f3f6cf' }}
                   to="/newsignup"
                 >
                   Start For Free
