@@ -7,45 +7,24 @@ const Nav = ({ user, handleLogOut }) => {
   let userOptions
   if (user) {
     userOptions = (
-      <AppBar position="static">
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+      <nav className="navbar">
+        <AppBar position="static">
+          <Toolbar variant="dense">
+            <h3>Welcome {user.email}</h3>
             <Typography
               variant="h6"
-              noWrap
-              component="a"
-              href="/"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
+                fontWeight: 100,
+                letterSpacing: '.1rem',
                 color: 'inherit',
                 textDecoration: 'none'
               }}
-            ></Typography>
-            <Typography variant="h6" sx={{ flexGrow: 1, align: 'left' }}>
-              Welcome {user.email}
-            </Typography>
-
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                underline: 'none',
-                mr: 7,
-                wordSpacing: '2rem',
-                flexGrow: 1,
-                textDecoration: 'none',
-                align: 'right'
-              }}
             >
-              <Link to="/"></Link>
               <Link
                 style={{ color: 'white', textDecoration: 'none' }}
-                underline="none"
                 to="/diary"
               >
                 Food Diary
@@ -75,57 +54,60 @@ const Nav = ({ user, handleLogOut }) => {
               >
                 Log Out
               </Link>
+              {/* <Link style={{ color: 'white', textDecoration: 'none' }} to="/">
+                Home
+              </Link> */}
+              {/* </Box> */}
             </Typography>
           </Toolbar>
-        </Container>
-      </AppBar>
-
-      // </nav>
+        </AppBar>
+      </nav>
     )
   }
 
   const publicOptions = (
     // <nav className="navbar">
-    <AppBar position="relative" sx={{ backgroundColor: 'white' }}>
-      <Toolbar>
-        <Typography
-          variant="h5"
-          gutterBottom
-          marked="center"
-          align="center"
-          underline="none"
-          sx={{
-            mr: 2,
-            display: { xs: 'none', md: 'flex' },
-            fontFamily: 'Helvetica Neue',
-            fontWeight: 50,
-            letterSpacing: '.1rem',
-            color: 'white',
-            backgroundColor: 'white',
-            textDecoration: 'none'
-          }}
-        >
-          <Link underline="none" to="/">
-            CalTrack
-          </Link>
-          <Link underline="none" to="/"></Link>
-          <Link
-            underline="none"
-            sx={{ backgroundColor: 'white' }}
-            to="/newsignup"
+    <Box sx={{ m: 5 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <Typography
+            variant="h6"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 200,
+
+              wordSpacing: '2 rem',
+
+              textDecoration: 'none'
+            }}
           >
-            Sign Up
-          </Link>
-          <Link to="/newlogin">Sign In</Link>
-        </Typography>
-      </Toolbar>
-    </AppBar>
-    // </nav>
+            <Link style={{ color: 'white', textDecoration: 'none' }} to="/">
+              CalTrack&nbsp;&nbsp;&nbsp;
+            </Link>
+            <Link
+              style={{ color: 'white', textDecoration: 'none' }}
+              to="/newsignup"
+            >
+              Sign Up
+            </Link>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <Link
+              style={{ color: 'white', textDecoration: 'none' }}
+              to="/newlogin"
+            >
+              Sign In
+            </Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </Box>
   )
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="relative">
         <Toolbar>
           <Typography
             component="h2"
@@ -134,7 +116,7 @@ const Nav = ({ user, handleLogOut }) => {
             color="blue"
             gutterBottom
           >
-            <Link to="/home"></Link>
+            <Link to="/"></Link>
 
             {user ? userOptions : publicOptions}
           </Typography>
