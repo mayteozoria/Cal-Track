@@ -2,7 +2,12 @@ const router = require('express').Router()
 const controller = require('../controllers/WeightController')
 const middleware = require('../middleware')
 
-router.get('/', controller.GetWeight)
+router.get(
+  '/',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.GetWeight
+)
 router.post(
   '/',
   middleware.stripToken,
