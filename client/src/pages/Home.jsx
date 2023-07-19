@@ -82,23 +82,18 @@ const About = () => {
               spacing={2}
               justifyContent="center"
             >
-              <Button sx={{ textColor: 'white' }} variant="contained">
+              <Button style={{ textColor: 'white' }} variant="contained">
                 <Link
-                  component="button"
-                  underline="none"
-                  sx={{ color: '#f3f6cf' }}
+                  // component="button"
+                  // underline="none"
+                  style={{ color: 'white', textDecoration: 'none' }}
                   to="/newsignup"
                 >
                   Start For Free
                 </Link>
               </Button>
-              {/*  <Button variant="outlined">Secondary action</Button> */}
             </Stack>
-            <Link
-              to="/newlogin"
-              variant="body2"
-              sx={{ alignItems: 'center', textColor: 'white' }}
-            >
+            <Link to="/newlogin" style={{ color: 'black', align: 'center' }}>
               Already have an account? Sign in
             </Link>
           </Container>

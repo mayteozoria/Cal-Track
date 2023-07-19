@@ -62,7 +62,7 @@ const NewSignUp = () => {
       password: '',
       confirmPassword: ''
     })
-    navigate('/login')
+    navigate('/newlogin')
   }
 
   return (
