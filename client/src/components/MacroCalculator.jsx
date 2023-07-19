@@ -144,6 +144,19 @@ const MacroCalculator = () => {
           <p>Calories for weight loss: {calories} calories per day</p>
         )}
       </Typography>
+
+      <Box sx={{ bgcolor: 'background.paper', p: 4 }} component="footer">
+        <Typography variant="h6" align="center" gutterBottom>
+          Information contained is for a school project and is not intended to
+          be used as health advice. Please consult a professional health expert.
+        </Typography>
+        {/* <Typography
+          variant="subtitle1"
+          align="center"
+          color="text.secondary"
+          component="p"
+        ></Typography> */}
+      </Box>
     </div>
   )
 }

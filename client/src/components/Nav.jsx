@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { AppBar, Toolbar, Typography, Container, Box } from '@mui/material'
-import AdbIcon from '@mui/icons-material/Adb'
 
 const Nav = ({ user, handleLogOut }) => {
   let userOptions
@@ -10,19 +9,25 @@ const Nav = ({ user, handleLogOut }) => {
       <nav className="navbar">
         <AppBar position="static">
           <Toolbar variant="dense">
-            <h3>Welcome {user.email}</h3>
             <Typography
               variant="h6"
               sx={{
                 mr: 2,
                 display: { xs: 'none', md: 'flex' },
                 fontFamily: 'monospace',
-                fontWeight: 100,
+                fontWeight: 50,
                 letterSpacing: '.1rem',
                 color: 'inherit',
                 textDecoration: 'none'
               }}
             >
+              Welcome {user.email}
+              <Link
+                style={{ color: 'white', textDecoration: 'none' }}
+                to="/macrocalculator"
+              >
+                MacroCal
+              </Link>
               <Link
                 style={{ color: 'white', textDecoration: 'none' }}
                 to="/diary"
@@ -31,21 +36,15 @@ const Nav = ({ user, handleLogOut }) => {
               </Link>
               <Link
                 style={{ color: 'white', textDecoration: 'none' }}
-                to="/weight"
-              >
-                Weight Tracker
-              </Link>
-              <Link
-                style={{ color: 'white', textDecoration: 'none' }}
-                to="/food"
-              >
-                Add Foods
-              </Link>
-              <Link
-                style={{ color: 'white', textDecoration: 'none' }}
                 to="/step"
               >
                 Steps
+              </Link>
+              <Link
+                style={{ color: 'white', textDecoration: 'none' }}
+                to="/weight"
+              >
+                Weight Tracker
               </Link>
               <Link
                 style={{ color: 'white', textDecoration: 'none' }}

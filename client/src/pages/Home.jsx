@@ -99,11 +99,11 @@ const About = () => {
           </Container>
         </Box>
 
-        <Container sx={{ py: 8 }} maxWidth="md">
+        {/* <Container sx={{ py: 3 }} maxWidth="md">
           {/* End hero unit */}
-          <Grid container spacing={4}>
+        {/* <Grid container spacing={1}>
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+              <Grid item key={card}>
                 <Card
                   sx={{
                     height: '100%',
@@ -117,11 +117,11 @@ const About = () => {
                       // 16:9
                       pt: '56.25%'
                     }}
-                    image="https://source.unsplash.com/random?wallpapers"
+                    image="https://source.unsplash.com/random?health"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      Blog
                     </Typography>
                     <Typography>
                       This is a media card. You can use this section to describe
@@ -136,12 +136,13 @@ const About = () => {
               </Grid>
             ))}
           </Grid>
-        </Container>
+        </Container> */}
       </main>
       {/* Footer */}
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Box sx={{ bgcolor: 'background.paper', p: 4 }} component="footer">
         <Typography variant="h6" align="center" gutterBottom>
-          Footer
+          Information contained is for a school project and is not intended to
+          be used as health advice. Please consult a professional health expert.
         </Typography>
         <Typography
           variant="subtitle1"

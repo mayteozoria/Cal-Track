@@ -20,14 +20,14 @@ const CreateWeight = async (req, res) => {
 
 const UpdateWeight = async (req, res) => {
   try {
-    const step = await Weight.findByIdAndUpdate(
+    const weight = await Weight.findByIdAndUpdate(
       req.params.weight_id,
       req.body,
       {
-        new: false
+        new: true
       }
     )
-    res.send(step)
+    res.send(weight)
   } catch (error) {
     throw error
   }
@@ -35,7 +35,7 @@ const UpdateWeight = async (req, res) => {
 
 const DeleteWeight = async (req, res) => {
   try {
-    await Step.deleteOne({ _id: req.params.weight_id })
+    await Weight.deleteOne({ _id: req.params.weight_id })
     res.send({ msg: 'Weight deleted', status: 'Ok' })
   } catch (error) {
     throw error

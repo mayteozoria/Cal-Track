@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
 import Nav from './components/Nav'
-import Start from './pages/Start'
 import NewLogIn from './pages/NewLogIn'
 import Food from './pages/Food'
 import Step from './pages/Step'
@@ -43,14 +42,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/newlogin" element={<NewLogIn setUser={setUser} />} />
-          {/* <Route path="/start" element={<Start />} /> */}
-          <Route path="/food" element={<Food />} />
+          <Route path="/newsignup" element={<NewSignUp />} />
+
           <Route path="/step" element={<Step />} />
           <Route path="/diary" element={<Diary />} />
 
           <Route path="/weight" element={<WeightTracker />} />
           <Route path="/macrocalculator" element={<MacroCalculator />} />
-          <Route path="/newsignup" element={<NewSignUp />} />
         </Routes>
       </main>
     </div>

@@ -1,5 +1,9 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
+import axios from 'axios'
+import { API_KEY } from '../globals'
+import Search from '../components/Search'
+import FoodResults from '../components/FoodResults'
 import { PieChart, pieArcLabelClasses } from '@mui/x-charts/PieChart'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -14,7 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
 
-const Diary = (props) => {
+const Diary = () => {
   const [allFoods, setAllFoods] = useState([])
   const [deleteFood, setDeleteFood] = useState(false)
   const [totalCalories, setTotalCalories] = useState(0)
@@ -35,6 +39,28 @@ const Diary = (props) => {
 
     handleFood()
   }, [deleteFood])
+
+  const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState([])
+
+  const getFoods = async () => {
+    const response = await axios.get(
+      `https://api.calorieninjas.com/v1/nutrition?query=` + searchQuery,
+      { headers: { 'X-Api-Key': `${API_KEY}` } }
+    )
+    console.log(response)
+    setSearchResults(response.data.items)
+  }
+
+  const handleChange = (e) => {
+    e.preventDefault()
+    console.log(searchQuery)
+    getFoods()
+  }
+
+  const onChange = (e) => {
+    setSearchQuery(e.target.value)
+  }
 
   const handleDeleteClick = async (food_id) => {
     const deleteFood = await DeleteFoods(food_id)
@@ -84,142 +110,153 @@ const Diary = (props) => {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
-        <Grid item xs={8}>
-          {/* <Grid container direction="column" style={{ minHeight: '55vh' }}>
-      <Grid item style={{ flexGrow: 1 }}> */}
-          <Typography
-            variant="h6"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 200,
-              letterSpacing: '.1rem',
-              // minHeight: '5vh',
-              color: 'inherit',
-              textDecoration: 'none'
-            }}
-          >
-            Food Diary
-          </Typography>
+    <div>
+      <div className="search">
+        <Search
+          handleChange={handleChange}
+          onChange={onChange}
+          searchQuery={searchQuery}
+        />
+        <FoodResults searchResults={searchResults} />
+      </div>
+      <Box sx={{ flexGrow: 1 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={8}>
+            <Typography
+              variant="h6"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 200,
+                letterSpacing: '.1rem',
+                // minHeight: '5vh',
+                color: 'inherit',
+                textDecoration: 'none'
+              }}
+            >
+              Food Diary
+            </Typography>
 
-          {/* <Grid> */}
-          <TableContainer sx={{ marginBottom: 5 }}>
-            <Table sx={{ width: 100 }} aria-label="a dense table">
-              <TableHead>
-                <TableRow>
-                  <TableCell
-                    sx={{ width: 100 }}
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                  >
-                    Name
-                  </TableCell>
-                  <TableCell
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                    align="right"
-                  >
-                    Calories
-                  </TableCell>
-                  <TableCell
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                    align="right"
-                  >
-                    Serving Size&nbsp;(g)
-                  </TableCell>
-                  <TableCell
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                    align="right"
-                  >
-                    Protein&nbsp;(g)
-                  </TableCell>
-                  <TableCell
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                    align="right"
-                  >
-                    Fat&nbsp;(g)
-                  </TableCell>
-                  <TableCell
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                    align="right"
-                  >
-                    Carbs&nbsp;(g)
-                  </TableCell>
-                  <TableCell
-                    style={{ backgroundColor: 'white', color: 'blue' }}
-                    align="right"
-                  >
-                    Action
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {allFoods.map((item) => (
-                  <TableRow
-                    key={item._id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell>{item.name}</TableCell>
-                    <TableCell align="center">{item.calories}</TableCell>
-                    <TableCell align="center">{item.serving_size_g}g</TableCell>
-                    <TableCell align="center">{item.protein_g}g</TableCell>
-                    <TableCell align="center">{item.fat_total_g}g</TableCell>
-                    <TableCell align="center">
-                      {item.carbohydrates_total_g}g
+            <TableContainer sx={{ marginBottom: 5 }}>
+              <Table sx={{ width: 100 }} aria-label="a dense table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell
+                      sx={{ width: 100 }}
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                    >
+                      Name
                     </TableCell>
-                    <TableCell align="center">
-                      <DeleteIcon onClick={() => handleDeleteClick(item._id)} />
+                    <TableCell
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                      align="right"
+                    >
+                      Calories
+                    </TableCell>
+                    <TableCell
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                      align="right"
+                    >
+                      Serving Size&nbsp;(g)
+                    </TableCell>
+                    <TableCell
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                      align="right"
+                    >
+                      Protein&nbsp;(g)
+                    </TableCell>
+                    <TableCell
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                      align="right"
+                    >
+                      Fat&nbsp;(g)
+                    </TableCell>
+                    <TableCell
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                      align="right"
+                    >
+                      Carbs&nbsp;(g)
+                    </TableCell>
+                    <TableCell
+                      style={{ backgroundColor: 'white', color: 'blue' }}
+                      align="right"
+                    >
+                      Action
                     </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {allFoods.map((item) => (
+                    <TableRow
+                      key={item._id}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell>{item.name}</TableCell>
+                      <TableCell align="center">{item.calories}</TableCell>
+                      <TableCell align="center">
+                        {item.serving_size_g}g
+                      </TableCell>
+                      <TableCell align="center">{item.protein_g}g</TableCell>
+                      <TableCell align="center">{item.fat_total_g}g</TableCell>
+                      <TableCell align="center">
+                        {item.carbohydrates_total_g}g
+                      </TableCell>
+                      <TableCell align="center">
+                        <DeleteIcon
+                          onClick={() => handleDeleteClick(item._id)}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
+          <Grid item xs={6}>
+            <TableContainer>
+              <Table sx={{ width: 660 }}>
+                <TableHead>
+                  <TableRow>
+                    <TableCell style={{ backgroundColor: 'white' }}>
+                      Total Calories:{totalCalories}
+                    </TableCell>
+                    <TableCell style={{ backgroundColor: 'white' }}>
+                      Carbs:{totalCarbs}g
+                    </TableCell>
+                    <TableCell style={{ backgroundColor: 'white' }}>
+                      Fats:{totalFats}g
+                    </TableCell>
+                    <TableCell style={{ backgroundColor: 'white' }}>
+                      Protein:{totalProtein}g
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+              </Table>
+            </TableContainer>
+          </Grid>
+          <Grid item xs={12}>
+            <PieChart
+              series={[
+                {
+                  outerRadius: 250,
+                  data,
+                  arcLabel: (item) => `${item.label} (${item.value})`,
+                  arcLabelMinAngle: 45
+                }
+              ]}
+              sx={{
+                [`& .${pieArcLabelClasses.root}`]: {
+                  fill: 'black',
+                  fontSize: 30
+                }
+              }}
+              {...sizing}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <TableContainer>
-            <Table sx={{ width: 660 }}>
-              <TableHead>
-                <TableRow>
-                  <TableCell style={{ backgroundColor: 'white' }}>
-                    Total Calories:{totalCalories}
-                  </TableCell>
-                  <TableCell style={{ backgroundColor: 'white' }}>
-                    Carbs:{totalCarbs}g
-                  </TableCell>
-                  <TableCell style={{ backgroundColor: 'white' }}>
-                    Fats:{totalFats}g
-                  </TableCell>
-                  <TableCell style={{ backgroundColor: 'white' }}>
-                    Protein:{totalProtein}g
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-            </Table>
-          </TableContainer>
-        </Grid>
-        <Grid item xs={12}>
-          <PieChart
-            series={[
-              {
-                outerRadius: 250,
-                data,
-                arcLabel: (item) => `${item.label} (${item.value})`,
-                arcLabelMinAngle: 45
-              }
-            ]}
-            sx={{
-              [`& .${pieArcLabelClasses.root}`]: {
-                fill: 'white',
-                fontSize: 14
-              }
-            }}
-            {...sizing}
-          />
-        </Grid>
-      </Grid>
-    </Box>
+      </Box>
+    </div>
   )
 }
 export default Diary

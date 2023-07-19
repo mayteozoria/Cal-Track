@@ -1,8 +1,5 @@
 import { useState, useEffect } from 'react'
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
-import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-import dayjs from 'dayjs'
+
 import {
   Typography,
   TextField,
@@ -12,7 +9,9 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  IconButton
+  IconButton,
+  Box,
+  Grid
 } from '@mui/material'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -83,118 +82,107 @@ const WeightTracker = () => {
   }
 
   return (
-    <div>
-      <Typography
-        variant="h6"
-        gutterBottom
-        sx={{
-          mr: 2,
-          display: { xs: 'none', md: 'flex' },
-          fontFamily: 'monospace',
-          fontWeight: 200,
-          letterSpacing: '.1rem',
-          minHeight: '8vh',
-          color: 'inherit',
-          textDecoration: 'none'
-        }}
-      >
-        Weight Tracker
-      </Typography>
-      <TextField
-        label="New Weight"
-        type="number"
-        name="weight"
-        placeholder="Enter lbs"
-        variant="outlined"
-        value={newWeight.weight}
-        onChange={handleChange}
-      />
-      {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker
-          label="Select date"
-          name="date"
-          placeholder="Date"
-          format="MM - DD - YYYY"
-          defaultValue={dayjs('07-1-2022')}
-          variant="outlined"
-          value={newWeight.date}
-          onChange={handleDateChange}
-        />
-      </LocalizationProvider> */}
-      <Button variant="contained" onClick={handleAddWeight}>
-        Add
-      </Button>
-      <Table sx={{ width: 300 }} aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            {/* <TableCell
-              align="right"
-              sx={{ width: 100 }}
-              style={{ backgroundColor: 'white', color: 'blue' }}
-            >
-              Date
-            </TableCell> */}
-            <TableCell
-              align="right"
-              // sx={{ width: 200 }}
-              style={{ backgroundColor: 'white', color: 'blue' }}
-            >
-              Weight
-            </TableCell>
-            <TableCell
-              align="right"
-              // sx={{ width: 200 }}
-              style={{ backgroundColor: 'white', color: 'blue' }}
-            >
-              Actions
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        {/* </Table> */}
-        <TableBody>
-          {weight.map((item, idx) => (
-            <TableRow align="right" key={item._id}>
-              {/* <TableCell>{item.weight}</TableCell> */}
+    <Box sx={{ flexGrow: 2 }}>
+      <Grid container spacing={2}>
+        <Grid item xs={2} align="center">
+          <Typography
+            variant="h6"
+            gutterBottom
+            align="right"
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 200,
+              letterSpacing: '.1rem',
+              minHeight: '8vh',
+              color: 'inherit',
+              textDecoration: 'none'
+            }}
+          ></Typography>
+          <TextField
+            align="center"
+            label="New Weight"
+            type="number"
+            name="weight"
+            placeholder="Enter lbs"
+            variant="outlined"
+            value={newWeight.weight}
+            onChange={handleChange}
+          />
 
-              <TableCell align="right">
-                {editWeight === item._id ? (
-                  <TextField
-                    label="Update weight"
-                    type="number"
-                    name="weight"
-                    placeholder="Enter lbs"
-                    variant="outlined"
-                    value={item.newWeight}
-                    onChange={handleInputChange}
-                  />
-                ) : (
-                  item.weight
-                )}
-              </TableCell>
-              <TableCell align="right">
-                {editWeight === item._id ? (
-                  <IconButton onClick={() => handleSave(item._id, idx)}>
-                    Save
-                  </IconButton>
-                ) : (
-                  <IconButton onClick={() => handleEdit(item._id)}>
-                    <EditIcon />
-                  </IconButton>
-                )}
-                <IconButton
-                  className="delete-button"
-                  type="button"
-                  value="delete"
-                  onClick={() => handleDelete(item._id)}
+          <Button variant="contained" onClick={handleAddWeight}>
+            Add
+          </Button>
+        </Grid>
+
+        <Grid item xs={2}>
+          <Table
+            align="center"
+            sx={{ width: 500, height: 100, direction: 'column' }}
+            aria-label="a dense table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell
+                  align="justify"
+                  style={{ backgroundColor: 'white', color: 'blue' }}
                 >
-                  <DeleteIcon />
-                </IconButton>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </div>
+                  Weight
+                </TableCell>
+                <TableCell
+                  align="justify"
+                  style={{ backgroundColor: 'white', color: 'blue' }}
+                >
+                  Actions
+                </TableCell>
+              </TableRow>
+            </TableHead>
+
+            <TableBody>
+              {weight.map((item, idx) => (
+                <TableRow align="justify" key={item._id}>
+                  <TableCell align="justify">
+                    {editWeight === item._id ? (
+                      <TextField
+                        label="Update weight"
+                        type="number"
+                        name="weight"
+                        placeholder="Enter lbs"
+                        variant="outlined"
+                        value={item.newWeight}
+                        onChange={handleInputChange}
+                      />
+                    ) : (
+                      item.weight
+                    )}
+                  </TableCell>
+                  <TableCell align="justify">
+                    {editWeight === item._id ? (
+                      <IconButton onClick={() => handleSave(item._id, idx)}>
+                        Save
+                      </IconButton>
+                    ) : (
+                      <IconButton onClick={() => handleEdit(item._id)}>
+                        <EditIcon />
+                      </IconButton>
+                    )}
+                    <IconButton
+                      className="delete-button"
+                      type="button"
+                      value="delete"
+                      onClick={() => handleDelete(item._id)}
+                    >
+                      <DeleteIcon />
+                    </IconButton>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Grid>
+      </Grid>
+    </Box>
   )
 }
 

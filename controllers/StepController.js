@@ -1,5 +1,4 @@
 const { Step } = require('../models')
-// const middleware = require('../middleware')
 
 const GetSteps = async (req, res) => {
   try {

@@ -24,6 +24,7 @@
 
 ---
 ### **Credits**
+### MacroCalculations (https://stackoverflow.com/questions/63963963/react-javascript-calculator-how-to-return-a-function-from-a-switch-statement)
 #### Markdown Guide: [ia.net](https://ia.net/writer/support/general/markdown-guide)
 
 #### Markdown Cheatsheet: [GitHub](https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf)

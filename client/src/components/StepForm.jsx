@@ -20,7 +20,7 @@ const StepForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    console.log('please works')
+
     const newSteps = await PostSteps(newStep)
     setSteps([...steps, newSteps])
     setNewStep({ description: '', steps: '' })
@@ -82,6 +82,7 @@ const StepForm = () => {
           </table>
         </div>
       </Typography>
+      //{' '}
     </div>
   )
 }
