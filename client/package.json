@@ -6,7 +6,7 @@
   "proxy": "http://localhost:3001",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && touch ./dist/CNAME && echo 'caltrack.surge.sh' >> ./dist/CNAME && npx surge --project ./dist --domain 'caltrack.surge.sh' ",
+    "build": "vite build && touch ./dist/caltrack && echo 'caltrack.surge.sh' >> ./dist/caltrack && npx surge --project ./dist --domain 'caltrack.surge.sh' ",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
