@@ -3,11 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy": "http://localhost:3001",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && touch ./dist/CNAME && echo 'caltrack.surge.sh' >> ./dist/CNAME && npx surge --project ./dist --domain 'caltrack.surge.sh'",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,15 +13,11 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.5",
     "@mui/icons-material": "^5.14.0",
-    "@mui/material": "^5.14.0",
+    "@mui/material": "^5.14.4",
     "@mui/styled-engine-sc": "^5.12.0",
     "@mui/x-charts": "^6.0.0-alpha.3",
-    "@mui/x-date-pickers": "^6.10.0",
     "axios": "^1.4.0",
-    "dayjs": "^1.11.9",
     "react": "^18.2.0",
-    "react-date-picker": "^10.2.0",
-    "react-datepicker": "^4.16.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.1",
     "styled-components": "^5.3.11"

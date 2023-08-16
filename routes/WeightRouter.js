@@ -4,8 +4,7 @@ const middleware = require('../middleware')
 
 router.get(
   '/',
-  middleware.stripToken,
-  middleware.verifyToken,
+
   controller.GetWeight
 )
 router.post(

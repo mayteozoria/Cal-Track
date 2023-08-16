@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { RegisterUser } from '../services/Auth'
 import { useNavigate } from 'react-router-dom'
-import * as React from 'react'
+import React from 'react'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
 import CssBaseline from '@mui/material/CssBaseline'
@@ -97,7 +97,8 @@ const NewSignUp = () => {
                   name="firstName"
                   required
                   fullWidth
-                  id="firstName"
+                  // id="firstName"
+                  type="text"
                   label="First Name"
                   value={formValues.firstName}
                   // autoFocus
@@ -106,38 +107,38 @@ const NewSignUp = () => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   onChange={handleChange}
-                  required
                   fullWidth
-                  id="lastName"
+                  // id="lastName"
+                  type="text"
                   label="Last Name"
                   name="lastName"
                   value={formValues.lastName}
                   autoComplete="family-name"
+                  required
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   onChange={handleChange}
-                  required
                   fullWidth
-                  id="email"
+                  type="email"
                   label="Email Address"
                   name="email"
                   autoComplete="email"
                   value={formValues.email}
+                  required
                 />
               </Grid>
               <Grid item xs={12}>
                 <TextField
                   onChange={handleChange}
-                  required
                   fullWidth
                   name="password"
                   label="Password"
                   type="password"
-                  id="password"
                   autoComplete="new-password"
                   value={formValues.password}
+                  required
                 />
               </Grid>
               <Grid item xs={12}>

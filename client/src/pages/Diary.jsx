@@ -1,6 +1,6 @@
 import { GetFoods, DeleteFoods } from '../services/FoodServices'
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import axios, { all } from 'axios'
 import { API_KEY } from '../globals'
 import Search from '../components/Search'
 import FoodResults from '../components/FoodResults'
@@ -11,13 +11,12 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
-import TextField from '@mui/material/TextField'
+
 import Box from '@mui/material/Box'
 
 import DeleteIcon from '@mui/icons-material/Delete'
 import Grid from '@mui/material/Grid'
 import { Typography } from '@mui/material'
-import MacroCalculator from '../components/MacroCalculator'
 
 const Diary = (props) => {
   const [allFoods, setAllFoods] = useState([])
@@ -26,19 +25,18 @@ const Diary = (props) => {
   const [totalCarbs, setTotalCarbs] = useState(0)
   const [totalFats, setTotalFats] = useState(0)
   const [totalProtein, setTotalProtein] = useState(0)
-  // const [goalCalories, setGoalCalories] = useState(0)
 
   useEffect(() => {
     const handleFood = async () => {
       const foods = await GetFoods()
       setAllFoods(foods)
+      console.log(allFoods)
 
       calculateCalories(foods)
       calculateCarbs(foods)
       calculateFats(foods)
       calculateProtein(foods)
     }
-
     handleFood()
   }, [deleteFood])
 
@@ -50,7 +48,7 @@ const Diary = (props) => {
       `https://api.calorieninjas.com/v1/nutrition?query=` + searchQuery,
       { headers: { 'X-Api-Key': `${API_KEY}` } }
     )
-    console.log(response)
+
     setSearchResults(response.data.items)
   }
 
@@ -223,11 +221,6 @@ const Diary = (props) => {
               <Table sx={{ width: 660 }}>
                 <TableHead>
                   <TableRow>
-                    {/* <TextField
-                      lable="Macro"
-                      value={goalCalories}
-                      onChange={hand}
-                    /> */}
                     <TableCell style={{ backgroundColor: 'white' }}>
                       Total Calories:{totalCalories}
                     </TableCell>

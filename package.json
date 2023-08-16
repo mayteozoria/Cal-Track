@@ -1,11 +1,10 @@
 {
   "name": "cal-track",
   "version": "1.0.0",
-  "description": "",
+  "description": "App to track calories and search through the food api for more food details",
   "main": "server.js",
   "scripts": {
-    "dev": "node --watch server.js",
-    "deploy": "git push heroku main && cd client && npm run dev"
+    "dev": "node --watch server.js"
   },
   "keywords": [],
   "author": "Mayte Ozoria",

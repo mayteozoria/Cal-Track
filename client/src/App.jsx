@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
 import Nav from './components/Nav'
 import NewLogIn from './pages/NewLogIn'
-import Food from './pages/Food'
 import Step from './pages/Step'
 import MacroCalculator from './components/MacroCalculator'
 import WeightTracker from './pages/WeightTracker'
@@ -13,7 +12,6 @@ import NewSignUp from './pages/NewSignUp'
 import Home from './pages/Home'
 
 import './App.css'
-// import FoodPie from './components/FoodPie'
 
 const App = () => {
   const [user, setUser] = useState(null)
